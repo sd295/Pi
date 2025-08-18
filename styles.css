@@ -1,0 +1,62 @@
+h1{
+    color:blue;
+    text-align: center;
+    font-size: 95px;
+    
+}
+body{
+    background-color:rgb(0, 0, 0);
+    }
+h2{
+    color:grey;
+    text-align: center;
+    font-size: 80%;
+    
+    
+}
+h3 {
+  color: blanchedalmond;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #222; 
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+}
+h4{
+  color:darkslateblue;
+  text-align: center;
+  font-size: 120%;
+  
+}
+h5{
+  color:rgb(0, 191, 255);
+  text-align: center;
+  font-size: 80%;
+  
+}
+#new{
+  color:red;
+  text-align: center;
+  font-size: 80%;
+  
+}
+
+
+
+
+#one, #two, #three, #four, #five {
+  background-color: #56565637;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    
+
+}
