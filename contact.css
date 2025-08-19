@@ -1,5 +1,5 @@
 
-#one, #two, #three, #four, #five {
+#one, #two, #three, #four, #five, #six {
   background-color: #56565637;
     color: white;
     padding: 10px 15px;
@@ -36,4 +36,5 @@ h3 {
   text-align: center;
   margin: 0;
   padding: 10px;
+
 }
