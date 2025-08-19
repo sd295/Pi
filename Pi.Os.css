@@ -1,5 +1,5 @@
 
-#one, #two, #three, #four, #five {
+#one, #two, #three, #four, #five, #six {
   background-color: #56565637;
     color: white;
     padding: 10px 15px;
@@ -31,4 +31,5 @@ h1{
     text-align: center;
     font-size: 95px;
     
+
 }
