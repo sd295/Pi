@@ -37,17 +37,10 @@ h4{
     margin: 2px;
 
 }
-#first{
+#first, #s, #a41, #a42{
     width: 120px;
     background-color: black;
     color: aliceblue;
     margin: -100px 50px 50px 50px;
 
 }
-#s{
-    width: 150px;
-    background-color: black;
-    color: aliceblue;
-    margin: -100px 50px 50px 50px;
-}
-
