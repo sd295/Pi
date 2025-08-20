@@ -37,6 +37,13 @@ h4{
     margin: 10px;
 
 }
+#v31, #v30, #v20{
+    background-color: black;
+    color: aliceblue;
+    width: 60px;
+}
+
+
 #first, #s, #a41, #a42{
     width: 170px;
     background-color: black;
@@ -45,9 +52,4 @@ h4{
 
 }
 
-#v31, #v30,#v20{
-    background-color: black;
-    color: aliceblue;
-    width: 60px;
-}
 
