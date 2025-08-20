@@ -1,54 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PLI 6.X4</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLI News</title>
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="margin:0; height:2000px;">
-<button id="one">PLI</button>
-<button id="two">News</button>
-<button id="three">Contact</button>
-<button id="four">Pi Os</button>
-<button id="five">S OS</button>
-<button id="six">Pi UI</button>
-<h1><b><i>PLI 6.X4 is out</i></b></h1>
-<h2>Starting from 18.8.2025</h2>
-<h4>New version info:</h4>
-<h5>- 20 new years support for base</h5>
-<h5>- New font for error</h5>
-<h5>- New context error message</h5>
-<h5 id="new">full HTML support starting PLI 7.0.0</h5>
-<h3>this site doesnt save data so :)</h3>
-<script>
+<body>
 
+    <div id="particles-js"></div>
 
-document.getElementById("one").addEventListener("click", () => {
-    window.location.href = "pli.html"; 
-});
+    <nav class="main-nav">
+        <ul>
+            <li><a href="pli.html">PLI</a></li>
+            <li><a href="PLI6.X2.html">News</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Systems</a>
+                <div class="dropdown-content">
+                    <a href="Pi.Os.html">Pi OS</a>
+                    <a href="S.OS.html">S OS</a>
+                    <a href="Pi.UI.html">Pi UI</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
+    
+    <main class="content-wrapper">
+        
+        <div class="swiper">
+            
+            <div class="swiper-wrapper">
 
-document.getElementById("two").addEventListener("click", () => {
-    window.location.href = "PLI6.X2.html"; 
-});
-document.getElementById("three").addEventListener("click", () => {
-    window.location.href = "contact.html"; 
-});
-document.getElementById("four").addEventListener("click", () => {
-    window.location.href = "Pi.Os.html"; 
-});
-document.getElementById("five").addEventListener("click", () => {
-    window.location.href = "S.OS.html"; 
-});
-document.getElementById("six").addEventListener("click", () => {
-    window.location.href = "Pi.UI.html";
+                
+                <div class="swiper-slide" data-date="2025-08-18" >
+                    <div class="news-article-card" >
+                        <h2>PLI 6.X4 is out</h2>
+                        <p class="release-date">Starting from 18.8.2025</p>
+                        <h3>New Version Info:</h3>
+                        <ul class="feature-list">
+                            <li>20 new years support for base</li>
+                            <li>New font for error</li>
+                            <li>New context error message</li>
+                        </ul>
+                        <p class="special-note">Full HTML support starting PLI 7.0.0</p>
+                    </div>
+                </div>
 
-});
+                
+                <div class="swiper-slide" data-date="2025-08-21">
+                    <div class="news-article-card">
+                        <h2>Pi UI 0.0.1.5 Carbolite</h2>
+                        <p class="release-date">Starting from 21.8.2025</p>
+                        <h3>changelog</h3>
+                        <ul class="feature-list">
+                            <li>New wallpaper</li>
+                            <li>better performance</li>
+                            <li>bug fixes</li>
+                        </ul>
+                        <p class="special-note">Starting from 5$ a year</p>
+                    </div>
+                </div>
+                <div class="swiper-slide" data-date="2025-08-22">
+                    <div class="news-article-card">
+                        <h2>Pi Os 1.16 Bergen </h2>
+                        <p class="release-date">Starting from 22.8.2025</p>
+                        <h3>beta 1</h3>
+                        <ul class="feature-list">
+                            <li>This site integretion</li>
+                            <li>...</li>
+                            <li>...</li>
+                        </ul>
+                        <p class="special-note">Starting from 21$ a year</p>
+                    </div>
+                </div>
 
+                
 
+            </div>
+            
+            <div class="swiper-pagination"></div>
 
+            
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </main>
+    
+    <div class="forest-container">
+        
+    </div>
 
-</script>
+    <footer>
+        <h3>this site doesnt save data so :)</h3>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    
+    <script src="PLI6.X2.js"></script>
+
 </body>
 </html>

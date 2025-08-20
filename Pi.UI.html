@@ -1,88 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pi UI</title>
-<link rel="stylesheet" href="Pi.UI.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi UI</title>
+    <link rel="stylesheet" href="Pi.UI.css">
 </head>
-<body style="margin:0; height:2000px;"></body>
-<button id="one">PLI</button>
-<button id="two">News</button>
-<button id="three">Contact</button>
-<button id="four">Pi Os</button>
-<button id="five">S OS</button>
-<button id="six">Pi UI</button>
+<body>
 
-<h1><b>Pi UI</b></h1>
-<h3>this site doesnt save data so :)</h3>
-<h4>A video with an older version</h4>
-<button id="s">Pi UI 0.0.0.6 b4.1</button>
-<h4>New update Pi UI 0.0.1.4</h4>
-<button id="first"><b>Video</b></button>
-<h4>Even if the new version cost 5EURO you still can get Pi UI 0.0.0.4 for free via...</h4>
-<button id="a41">patreon</button>
-<button id="a42">GitHub</button>
-<h4>Old version, GitHub only</h4>
-<button id="v31">0.0.0.3.1</button>
-<button id="v30">0.0.0.3</button>
-<button id="v20">0.0.0.2</button>
+    
+    <div id="particles-js"></div>
 
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="pli.html">PLI</a></li>
+            <li><a href="PLI6.X2.html">News</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">UI/OS</a>
+                <div class="dropdown-content">
+                    <a href="Pi.Os.html">Pi OS</a>
+                    <a href="S.OS.html">S OS</a>
+                    <a href="Pi.UI.html">Pi UI</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
+    
+    <main class="content-wrapper">
+        <div class="product-card">
+            
+            <h1>Pi UI</h1>
 
-<script>
-document.getElementById("one").addEventListener("click", () => {
-    window.location.href = "pli.html"; 
-});
-document.getElementById("two").addEventListener("click", () => {
-    window.location.href = "PLI6.X2.html"; 
-});
-document.getElementById("three").addEventListener("click", () => {
-    window.location.href = "contact.html"; 
-});
-document.getElementById("four").addEventListener("click", () => {
-    window.location.href = "Pi.Os.html"; 
-});
-document.getElementById("five").addEventListener("click", () => {
-    window.location.href = "S.OS.html"; 
-});
-document.getElementById("six").addEventListener("click", () => {
-    window.location.href = "Pi.UI.html";
+            <div class="section-group">
+                <h3>New Update: Pi UI 0.0.1.4</h3>
+                <a href="https://www.tiktok.com/@nordic_shooting_star/video/7522972819785862422" target="_blank" rel="noopener noreferrer" class="link-button highlight-link">Watch the Video</a>
+            </div>
 
-});
-document.getElementById("first").addEventListener("click", () => {
-    const gmailUrl = "https://www.tiktok.com/@nordic_shooting_star/video/7522972819785862422";
-    window.open(gmailUrl, "_blank"); 
-});
-document.getElementById("s").addEventListener("click", () => {
-    const gmailUrl = "https://www.youtube.com/watch?v=EwOE2hfFo3w";
-    window.open(gmailUrl, "_blank"); 
-});
-document.getElementById("a41").addEventListener("click", () => {
-    const gmailUrl = "https://www.patreon.com/posts/pi-ui-0-0-0-4-107961124";
-    window.open(gmailUrl, "_blank"); 
-});
-document.getElementById("a42").addEventListener("click", () => {
-    const gmailUrl = "https://github.com/sd295/Pi-UI/tree/main/Pi%20Ui%200.0.0.4";
-    window.open(gmailUrl, "_blank"); 
-});
-document.getElementById("v31").addEventListener("click", () => {
-    const gmailUrl = "https://github.com/sd295/Pi-UI/tree/main/00031";
-    window.open(gmailUrl, "_blank"); 
-});
-document.getElementById("v30").addEventListener("click", () => {
-    const gmailUrl = "https://github.com/sd295/Pi-UI/tree/main/0003";
-    window.open(gmailUrl, "_blank"); 
-});
-    document.getElementById("v20").addEventListener("click", () => {
-    const gmailUrl = "https://github.com/sd295/Pi-UI/tree/main/0002";
-    window.open(gmailUrl, "_blank"); 
-});
+            <div class="section-group">
+                <h3>Get Pi UI 0.0.0.4 (Free)</h3>
+                <p>Even if the new version costs 5 EURO, you can still get this version for free via...</p>
+                <div class="link-cluster">
+                    <a href="https://www.patreon.com/posts/pi-ui-0-0-0-4-107961124" target="_blank" rel="noopener noreferrer" class="link-button">Patreon</a>
+                    <a href="https://github.com/sd295/Pi-UI/tree/main/Pi%20Ui%200.0.0.4" target="_blank" rel="noopener noreferrer" class="link-button">GitHub</a>
+                </div>
+            </div>
 
+            <div class="section-group">
+                <h3>Older Versions (GitHub Only)</h3>
+                <div class="link-cluster">
+                    <a href="https://github.com/sd295/Pi-UI/tree/main/00031" target="_blank" rel="noopener noreferrer" class="link-button version-link">0.0.0.3.1</a>
+                    <a href="https://github.com/sd295/Pi-UI/tree/main/0003" target="_blank" rel="noopener noreferrer" class="link-button version-link">0.0.0.3</a>
+                    <a href="https://github.com/sd295/Pi-UI/tree/main/0002" target="_blank" rel="noopener noreferrer" class="link-button version-link">0.0.0.2</a>
+                </div>
+            </div>
 
-</script>
+             <div class="section-group">
+                <h3>Legacy Video (v0.0.0.6 b4.1)</h3>
+                <a href="https://www.youtube.com/watch?v=EwOE2hfFo3w" target="_blank" rel="noopener noreferrer" class="link-button">Watch on YouTube</a>
+            </div>
+
+        </div>
+    </main>
+    
+    
+    <div class="forest-container">
+        
+    </div>
+
+    
+    <footer>
+        <h3>this site doesnt save data so :)</h3>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    
+    <script src="Pi.UI.js"></script>
+
 </body>
-
 </html>
-
-

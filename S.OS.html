@@ -1,45 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S OS</title>
-<link rel="stylesheet" href="S.OS.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S OS</title>
+    <link rel="stylesheet" href="S.OS.css">
 </head>
-<body style="margin:0; height:2000px;"></body>
-<button id="one">PLI</button>
-<button id="two">News</button>
-<button id="three">Contact</button>
-<button id="four">Pi Os</button>
-<button id="five">S OS</button>
-<button id="six">Pi UI</button>
-<h1><b>S.OS an assembly os created in 16bit.More are cooming</b></h1>
-<h3>this site doesnt save data so :)</h3>
+<body>
+
+    
+    <div id="particles-js"></div>
+
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="pli.html">PLI</a></li>
+            <li><a href="PLI6.X2.html">News</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">UI/OS</a>
+                <div class="dropdown-content">
+                    <a href="Pi.Os.html">Pi OS</a>
+                    <a href="S.OS.html">S OS</a>
+                    <a href="Pi.UI.html">Pi UI</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
 
+    <main class="content-wrapper">
+        <div class="info-card">
+            
+            <h2>S.OS</h2>
+            <p>
+                An assembly OS created in 16bit. More are coming.
+            </p>
+            
+        </div>
+    </main>
+    
+    
+    <div class="forest-container">
+        <div class="tree tree1"></div>
+        <div class="tree tree2"></div>
+        <div class="tree tree3"></div>
+        <div class="tree tree4"></div>
+        <div class="tree tree5"></div>
+        <div class="tree tree6"></div>
+    </div>
 
-<script>
-document.getElementById("one").addEventListener("click", () => {
-    window.location.href = "pli.html"; 
-});
-document.getElementById("two").addEventListener("click", () => {
-    window.location.href = "PLI6.X2.html"; 
-});
-document.getElementById("three").addEventListener("click", () => {
-    window.location.href = "contact.html"; 
-});
-document.getElementById("four").addEventListener("click", () => {
-    window.location.href = "Pi.Os.html"; 
-});
-document.getElementById("five").addEventListener("click", () => {
-    window.location.href = "S.OS.html"; 
-});
-document.getElementById("six").addEventListener("click", () => {
-    window.location.href = "Pi.UI.html";
+    
+    <footer>
+        <h3>this site doesnt save data so :)</h3>
+    </footer>
 
-});
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    
+    <script src="S.OS.js"></script>
 
-
-</script>
 </body>
 </html>

@@ -1,69 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact</title>
-<link rel="stylesheet" href="contact.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+   
+    <link rel="stylesheet" href="contact.css">
 </head>
-<body style="margin:0; height:2000px;">
-<button id="one">PLI</button>
-<button id="two">News</button>
-<button id="three">Contact</button>
-<button id="four">Pi Os</button>
-<button id="five">S OS</button>
-<button id="six">Pi UI</button>
-<h1><b>How to cantact me:</b></h1>
-<button id="email">Email</button>
-<h1><b>Media:</b></h1>
-<button id="tt"><i><b>Tik Tok</b></i></button>
-<button id="yt"><i><b>Youtube</b></i></button>
-<h1><b>Support:</b></h1>
-<button id="xp"><b>patreon</b></button>
-<h3>this site doesnt save data so :)</h3>
+<body>
 
-<script>
-document.getElementById("one").addEventListener("click", () => {
-    window.location.href = "pli.html"; 
-});
-document.getElementById("two").addEventListener("click", () => {
-    window.location.href = "PLI6.X2.html"; 
-});
-document.getElementById("three").addEventListener("click", () => {
-    window.location.href = "contact.html"; 
-});
-document.getElementById("four").addEventListener("click", () => {
-    window.location.href = "Pi.Os.html"; 
-});
-document.getElementById("five").addEventListener("click", () => {
-    window.location.href = "S.OS.html"; 
+    
+    <div id="particles-js"></div>
 
-});
-document.getElementById("six").addEventListener("click", () => {
-    window.location.href = "Pi.UI.html";
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="pli.html">PLI</a></li>
+            <li><a href="PLI6.X2.html">News</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">UI/OS</a>
+                <div class="dropdown-content">
+                    <a href="Pi.Os.html">Pi OS</a>
+                    <a href="S.OS.html">S OS</a>
+                    <a href="Pi.UI.html">Pi UI</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-});
-document.getElementById("email").addEventListener("click", () => {
-    const gmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&to=Seridarivus@gmail.com";
-    window.open(gmailUrl, "_blank"); 
-});
-document.getElementById("tt").addEventListener("click", () => {
-    const tikTokUrl = "https://www.tiktok.com/@nordic_shooting_star"
-    window.open(tikTokUrl, "_blank"); 
-});
-document.getElementById("yt").addEventListener("click", () => {
-    const youtubeUrl = "https://www.youtube.com/@seridarivus"
-    window.open(youtubeUrl, "_blank"); 
-});
-document.getElementById("xp").addEventListener("click", () => {
-    const patreonUrl = "https://www.patreon.com/seridarivus"
-    window.open(patreonUrl, "_blank"); 
-});
+   
+    <main class="content-wrapper">
+        <div class="contact-card">
+            
+            <h2>How to contact me:</h2>
+            <div class="link-group">
+              
+                <a href="mailto:Seridarivus@gmail.com" class="contact-link">Email</a>
+            </div>
 
+            <h2>Media:</h2>
+            <div class="link-group">
+            
+                <a href="https://www.tiktok.com/@nordic_shooting_star" target="_blank" rel="noopener noreferrer" class="contact-link">TikTok</a>
+                <a href="https://www.youtube.com/@seridarivus" target="_blank" rel="noopener noreferrer" class="contact-link">Youtube</a>
+            </div>
 
+            <h2>Support:</h2>
+            <div class="link-group">
+                <a href="https://www.patreon.com/seridarivus" target="_blank" rel="noopener noreferrer" class="contact-link">Patreon</a>
+            </div>
 
+        </div>
+    </main>
+    
+    
+    <div class="forest-container">
+        <div class="tree tree1"></div>
+        <div class="tree tree2"></div>
+        <div class="tree tree3"></div>
+        <div class="tree tree4"></div>
+        <div class="tree tree5"></div>
+        <div class="tree tree6"></div>
+    </div>
 
+   
+    <footer>
+        <h3>this site doesnt save data so :)</h3>
+    </footer>
 
-</script>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    
+    <script src="contact.js"></script>
+
 </body>
 </html>
