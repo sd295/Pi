@@ -44,3 +44,8 @@ h4{
     margin: -70px 50px 50px 50px;
 
 }
+#v31, #v30,#v20{
+    background-color: black;
+    color: aliceblue;
+    width: 60px;
+}
