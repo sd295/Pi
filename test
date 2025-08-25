@@ -1,0 +1,136 @@
+import requests
+from bs4 import BeautifulSoup
+import os
+import yt_dlp # For popular video hosting sites
+import mimetypes # To guess file type from URL or content type
+
+# --- Step 1: Fetch the Webpage Content ---
+def fetch_page(url):
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers, timeout=30) # Set a timeout [2]
+        response.raise_for_status()  # Raise an HTTPError for bad responses (4xx or 5xx)
+        return response.text
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching page {url}: {e}")
+        return None
+
+# --- Step 2 & 3: Parse HTML and Extract Video URLs ---
+def extract_video_urls_basic(html_content, base_url):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    video_urls = []
+
+    # Look for <video> tags
+    for video_tag in soup.find_all('video'):
+        if video_tag.get('src'):
+            video_urls.append(video_tag['src'])
+        for source_tag in video_tag.find_all('source'):
+            if source_tag.get('src'):
+                video_urls.append(source_tag['src'])
+
+    # Look for <a> tags that might link directly to video files (e.g., .mp4, .webm)
+    for link_tag in soup.find_all('a', href=True):
+        href = link_tag['href']
+        if any(href.lower().endswith(ext) for ext in ['.mp4', '.webm', '.ogg', '.avi', '.mov', '.mkv']):
+            # Construct absolute URL if it's relative
+            if not href.startswith('http'):
+                abs_href = requests.compat.urljoin(base_url, href)
+                video_urls.append(abs_href)
+            else:
+                video_urls.append(href)
+
+    # Consider iframes for embedded videos (e.g., YouTube, Vimeo)
+    for iframe_tag in soup.find_all('iframe', src=True):
+        src = iframe_tag['src']
+        # You would need specific logic here for each embedded player
+        # For YouTube, yt-dlp can handle the embed URL directly
+        if "youtube.com/embed/" in src or "vimeo.com/" in src:
+            video_urls.append(src)
+            # yt-dlp can often resolve these to direct download links
+
+    return list(set(video_urls)) # Remove duplicates
+
+# --- Step 4 & 5: Identify Video Format and Download ---
+def download_video(video_url, output_folder="downloads"):
+    os.makedirs(output_folder, exist_ok=True)
+    
+    # Use yt-dlp for popular sites
+    if any(domain in video_url for domain in ["youtube.com", "vimeo.com", "dailymotion.com"]):
+        print(f"Attempting to download with yt-dlp: {video_url}")
+        try:
+            ydl_opts = {
+                'outtmpl': os.path.join(output_folder, '%(title)s.%(ext)s'),
+                'noplaylist': True, # Only download the single video if it's part of a playlist
+                'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best', # Prioritize mp4
+            }
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                ydl.download([video_url])
+            print(f"Successfully downloaded with yt-dlp: {video_url}")
+            return True
+        except Exception as e:
+            print(f"yt-dlp failed for {video_url}: {e}. Trying direct download.")
+            # Fallback to direct download if yt-dlp fails or is not applicable
+
+    # Direct download for other URLs
+    try:
+        with requests.get(video_url, stream=True) as r: # Stream for large files [2, 3]
+            r.raise_for_status()
+
+            # Try to get filename from Content-Disposition header
+            filename = None
+            if "Content-Disposition" in r.headers:
+                cd = r.headers["Content-Disposition"]
+                filename = cd.split("filename=")[-1].strip(" \"'")
+            
+            if not filename:
+                # Guess filename from URL
+                filename = os.path.basename(video_url).split('?')[0]
+                if not '.' in filename: # If no extension, try to guess
+                    content_type = r.headers.get('content-type', '').split(';')[0]
+                    extension = mimetypes.guess_extension(content_type)
+                    if extension:
+                        filename += extension
+                    else:
+                        filename += ".mp4" # Default to mp4 if cannot guess
+
+            filepath = os.path.join(output_folder, filename)
+            
+            print(f"Downloading {filename} from {video_url}...")
+            total_size = int(r.headers.get('content-length', 0))
+            downloaded_size = 0
+
+            with open(filepath, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192): # Download in chunks [6]
+                    if chunk:
+                        f.write(chunk)
+                        downloaded_size += len(chunk)
+                        # Optional: Add progress indicator here
+                        # if total_size:
+                        #     progress = (downloaded_size / total_size) * 100
+                        #     print(f"\r{filename}: {progress:.2f}%", end='')
+            print(f"\nSuccessfully downloaded: {filepath}")
+            return True
+    except requests.exceptions.RequestException as e:
+        print(f"Error downloading {video_url}: {e}")
+        return False
+
+# --- Main execution ---
+if __name__ == "__main__":
+    target_url = input("Enter the URL of the webpage to scrape for videos: ")
+    
+    html = fetch_page(target_url)
+    if html:
+        video_links = extract_video_urls_basic(html, target_url)
+        if video_links:
+            print(f"Found {len(video_links)} potential video links.")
+            for i, link in enumerate(video_links):
+                print(f"[{i+1}] {link}")
+                download_video(link)
+        else:
+            print("No video links found using basic HTML parsing.")
+            print("Trying with yt-dlp directly on the main URL, if it's a supported site.")
+            download_video(target_url) # Attempt to download the main page content as a video if yt-dlp supports it
+    else:
+        print("Could not retrieve webpage content.")
