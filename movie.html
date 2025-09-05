@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>IMDb Stream Player</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <h2>Stream from IMDb ID</h2>
+  <input id="imdb" placeholder="tt30221531">
+  <input id="season" placeholder="Season (optional)">
+  <input id="episode" placeholder="Episode (optional)">
+  <button onclick="getStream()">Play</button>
+  <br><br>
+  <video id="video" width="640" height="360" controls></video>
+
+  <script>
+    async function getStream() {
+      const imdb = document.getElementById("imdb").value.trim();
+      const season = document.getElementById("season").value.trim();
+      const episode = document.getElementById("episode").value.trim();
+
+      if (!imdb) {
+        alert("Please enter an IMDb ID");
+        return;
+      }
+
+      // build query
+      let url = "https://your-tunnel-id-3000.devtunnels.ms/api/stream?imdb=" + imdb;
+      if (season && episode) {
+        url += "&season=" + season + "&episode=" + episode;
+      }
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.m3u8) {
+          alert("No m3u8 returned");
+          return;
+        }
+
+        const video = document.getElementById("video");
+
+        if (Hls.isSupported()) {
+          const hls = new Hls();
+          hls.loadSource(data.m3u8);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = data.m3u8;
+          video.play();
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error fetching stream");
+      }
+    }
+  </script>
+</body>
+</html>
+<!--https://luminaplus.hu/Resources/Images/banner.webp-->
