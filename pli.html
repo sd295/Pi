@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLI - Welcome</title>
+    <title>PLI - Chat with the Bot</title>
+    <!-- Link to the ORIGINAL CSS for particles and layout -->
     <link rel="stylesheet" href="pli.css">
+    <!-- Link to the NEW CSS for the chat interface -->
+    <link rel="stylesheet" href="chat.css">
 </head>
 <body>
 
-    
     <div id="particles-js"></div>
 
-    
     <nav class="main-nav">
         <ul>
             <li><a href="pli.html">PLI</a></li>
             <li><a href="PLI6.X2.html">News</a></li>
-            
-            
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">UI/OS</a>
                 <div class="dropdown-content">
@@ -26,18 +25,31 @@
                     <a href="Pi.UI.html">Pi UI</a>
                 </div>
             </li>
-
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
-    <header class="main-header">
-        <h1><b>soon</b></h1>
-    </header>
+    <!-- ========= NEW CHAT INTERFACE ========= -->
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>PLI Chatbot</h1>
+            <p>Ask me anything!</p>
+        </header>
+        <div class="chat-box" id="chat-box">
+            <!-- Bot's welcome message -->
+            <div class="message bot-message">
+                <p>Hello! I'm the PLI assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <form class="chat-input-form" id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off" required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <!-- ========= END OF CHAT INTERFACE ========= -->
 
-    
+
     <div class="forest-container">
-        
         <div class="tree tree1"></div>
         <div class="tree tree2"></div>
         <div class="tree tree3"></div>
@@ -50,11 +62,12 @@
         <h3>this site doesnt save data so :)</h3>
     </footer>
 
-    
+    <!-- Scripts for particles and original effects -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    
-    
     <script src="pli.js"></script>
+    
+    <!-- NEW SCRIPT for chat functionality -->
+    <script src="chat.js"></script>
 
 </body>
 </html>
