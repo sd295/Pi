@@ -1,3 +1,5 @@
+alert("Chat script has started!"); 
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Get references to the HTML elements we need to interact with
