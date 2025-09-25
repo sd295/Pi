@@ -172,12 +172,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-/**
- * Removes the "typing..." animation from the chat box.
- */
-function hideTypingIndicator() {
-    const indicator = document.getElementById('typing-indicator');
-    if (indicator) {
-        chatBox.removeChild(indicator);
-    }
-}
