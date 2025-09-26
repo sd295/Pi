@@ -1,0 +1,269 @@
+<!-- html.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- The data-subject attribute is CRITICAL -->
+     <header>
+    <div class="header-content">
+        <!-- This is a link back to the main subject selection -->
+        
+
+        <!-- 
+            NEW: User Profile Section
+            This will be hidden by default and shown by JavaScript when logged in.
+        -->
+        <div id="user-profile" class="hidden">
+            <span id="user-name"></span>
+            <img id="user-photo" src="default-avatar.png" alt="Profile Picture">
+            <button id="logout-btn" class="logout-btn-header">Logout</button>
+        </div>
+    </div>
+    </header>
+    <main class="hub-container" data-subject="html">
+        <a href="index.html" class="back-link">&larr; Back to Subjects</a>
+        <h1>HTML Lessons</h1>
+        <p>WE RECOMAND PLAYING EVERY LEVEL NOT ONLY FOR THE FREE ANIMATION.</p>
+        <div class="level-selection">
+            <h1><b>Section </b></h1>
+            <h1><b>A1 </b></h1>
+            <h1><b>EasyMedium</b></h1>
+            <button class="level-btn" data-lesson="l1.html">Level 1: </button>
+            <button class="level-btn" data-lesson="l2.html" disabled>Level 2: </button>
+            <a class="level-btn" href="animation/html/l2.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l5.html" >Norwegian 1</button>
+            <button class="level-btn" data-lesson="l3.html" disabled>Level 3: </button>
+            <button class="level-btn" data-lesson="l4.html" disabled>Level 4: </button>
+            <button class="level-btn" data-lesson="l6.html" disabled >Fix site</button>
+            <button class="level-btn" data-lesson="l7.html" >Practice in Norway</button>
+            <a class="level-btn " href="animation/html/l5.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l8.html" >Level 5:</button>
+            <button class="level-btn" data-lesson="l9.html" disabled>Level 6: </button>
+            <button class="level-btn" data-lesson="l10.html" disabled>Level 7: </button>
+            <button class="level-btn" data-lesson="l11.html" disabled>Norway 2</button>
+            <button class="level-btn" data-lesson="l12.html" disabled>Level 8:</button>
+            <button class="level-btn" data-lesson="l13.html" >Fix site</button>
+           <!-- <button class="level-btn" data-lesson="l14.html" >Fix Site</button> -->
+            <a class="level-btn " href="animation/html/l11.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l15.html" >Level 9 </button>
+            <button class="level-btn" data-lesson="l16.html" disabled>Level 10 </button>
+            <button class="level-btn" data-lesson="l17.html" disabled>Level 11 </button>
+            <button class="level-btn" data-lesson="l18.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l19.html" >Level 12 </button>
+            <h1>Section</h1>
+            <a class="movie" href="Movie/Movie4.html" >A2</a>
+            <h1>Medium</h1>
+            <button class="level-btn" data-lesson="l20.html">Level 13: </button>
+            <button class="level-btn" data-lesson="l21.html" disabled>Level 14: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l22.html" >Norway 3</button>
+            <button class="level-btn" data-lesson="l23.html" disabled>Level 15: </button>
+            <button class="level-btn" data-lesson="l24.html" disabled>Level 16: </button>
+            <button class="level-btn" data-lesson="l25.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l26.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l27.html" >Level 17:</button>
+            <button class="level-btn" data-lesson="l28.html" disabled>Level 18: </button>
+            <button class="level-btn" data-lesson="l29.html" disabled>Level 19: </button>
+            <button class="level-btn" data-lesson="l30.html" disabled>Norway 4</button>
+            <button class="level-btn" data-lesson="l31.html" disabled>Level 20:</button>
+            <button class="level-btn" data-lesson="l32.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l33.html" >Level 21: </button>
+            <button class="level-btn" data-lesson="l34.html" disabled>Level 22 </button>
+            <button class="level-btn" data-lesson="l35.html" disabled>Level 23 </button>
+            <button class="level-btn" data-lesson="l36.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l37.html" >Level 24 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A3 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l38.html">Level 25: </button>
+            <button class="level-btn" data-lesson="l39.html" disabled>Level 26: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l40.html" >Norway 5</button>
+            <button class="level-btn" data-lesson="l41.html" disabled>Level 27: </button>
+            <button class="level-btn" data-lesson="l42.html" disabled>Level 28: </button>
+            <button class="level-btn" data-lesson="l43.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l44.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l45.html" >Level 29:</button>
+            <button class="level-btn" data-lesson="l46.html" disabled>Level 30: </button>
+            <button class="level-btn" data-lesson="l47.html" disabled>Level 31: </button>
+            <button class="level-btn" data-lesson="l48.html" disabled>Norway 6</button>
+            <button class="level-btn" data-lesson="l49.html" disabled>Level 32:</button>
+            <button class="level-btn" data-lesson="l50.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l51.html" >Level 33: </button>
+            <button class="level-btn" data-lesson="l52.html" disabled>Level 34 </button>
+            <button class="level-btn" data-lesson="l53.html" disabled>Level 35 </button>
+            <button class="level-btn" data-lesson="l54.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l55.html" >Level 36 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A4 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l56.html">Level 37: </button>
+            <button class="level-btn" data-lesson="l57.html" disabled>Level 38: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l58.html" >Norway 7</button>
+            <button class="level-btn" data-lesson="l59.html" disabled>Level 39: </button>
+            <button class="level-btn" data-lesson="l60.html" disabled>Level 40: </button>
+            <button class="level-btn" data-lesson="l61.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l62.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l63.html" >Level 41:</button>
+            <button class="level-btn" data-lesson="l64.html" disabled>Level 44: </button>
+            <button class="level-btn" data-lesson="l65.html" disabled>Level 45: </button>
+            <button class="level-btn" data-lesson="l66.html" disabled>Norway 8</button>
+            <button class="level-btn" data-lesson="l67.html" disabled>Level 46:</button>
+            <button class="level-btn" data-lesson="l68.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l69.html" >Level 47: </button>
+            <button class="level-btn" data-lesson="l70.html" disabled>Level 48 </button>
+            <button class="level-btn" data-lesson="l71.html" disabled>Level 49 </button>
+            <button class="level-btn" data-lesson="l72.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l73.html" >Level 50 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A5 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l74.html">Level 51: </button>
+            <button class="level-btn" data-lesson="l75.html" disabled>Level 52: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l76.html" >Norway 9</button>
+            <button class="level-btn" data-lesson="l77.html" disabled>Level 53: </button>
+            <button class="level-btn" data-lesson="l78.html" disabled>Level 54: </button>
+            <button class="level-btn" data-lesson="l79.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l80.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l81.html" >Level 55:</button>
+            <button class="level-btn" data-lesson="l82.html" disabled>Level 56: </button>
+            <button class="level-btn" data-lesson="l83.html" disabled>Level 57: </button>
+            <button class="level-btn" data-lesson="l84.html" disabled>Norway 10</button>
+            <button class="level-btn" data-lesson="l85.html" disabled>Level 58:</button>
+            <button class="level-btn" data-lesson="l86.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l87.html" >Level 59: </button>
+            <button class="level-btn" data-lesson="l88.html" disabled>Level 60 </button>
+            <button class="level-btn" data-lesson="l89.html" disabled>Level 61 </button>
+            <button class="level-btn" data-lesson="l90.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l91.html" >Level 62 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A6 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l92.html">Level 63: </button>
+            <button class="level-btn" data-lesson="l93.html" disabled>Level 64: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l94.html" >Norway 11</button>
+            <button class="level-btn" data-lesson="l95.html" disabled>Level 65: </button>
+            <button class="level-btn" data-lesson="l96.html" disabled>Level 66: </button>
+            <button class="level-btn" data-lesson="l97.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l98.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l99.html" >Level 67:</button>
+            <button class="level-btn" data-lesson="l100.html" disabled>Level 68: </button>
+            <button class="level-btn" data-lesson="l101.html" disabled>Level 69: </button>
+            <button class="level-btn" data-lesson="l102.html" disabled>Norway 12</button>
+            <button class="level-btn" data-lesson="l103.html" disabled>Level 70:</button>
+            <button class="level-btn" data-lesson="l104.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l105.html" >Level 71: </button>
+            <button class="level-btn" data-lesson="l106.html" disabled>Level 72 </button>
+            <button class="level-btn" data-lesson="l107.html" disabled>Level 73 </button>
+            <button class="level-btn" data-lesson="l108.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l109.html" >Level 74 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A7 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l110.html">Level 75: </button>
+            <button class="level-btn" data-lesson="l111.html" disabled>Level 76: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l112.html" >Norway 13</button>
+            <button class="level-btn" data-lesson="l113.html" disabled>Level 77: </button>
+            <button class="level-btn" data-lesson="l114.html" disabled>Level 78: </button>
+            <button class="level-btn" data-lesson="l115.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l116.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l117.html" >Level 79:</button>
+            <button class="level-btn" data-lesson="l118.html" disabled>Level 80: </button>
+            <button class="level-btn" data-lesson="l119.html" disabled>Level 81: </button>
+            <button class="level-btn" data-lesson="l120.html" disabled>Norway 14</button>
+            <button class="level-btn" data-lesson="l121.html" disabled>Level 82:</button>
+            <button class="level-btn" data-lesson="l122.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l123.html" >Level 83: </button>
+            <button class="level-btn" data-lesson="l124.html" disabled>Level 84 </button>
+            <button class="level-btn" data-lesson="l125.html" disabled>Level 85 </button>
+            <button class="level-btn" data-lesson="l126.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l127.html" >Level 86 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A8 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l128.html">Level 87: </button>
+            <button class="level-btn" data-lesson="l129.html" disabled>Level 88: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l130.html" >Norway 15</button>
+            <button class="level-btn" data-lesson="l131.html" disabled>Level 89: </button>
+            <button class="level-btn" data-lesson="l132.html" disabled>Level 90: </button>
+            <button class="level-btn" data-lesson="l133.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l134.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l135.html" >Level 91:</button>
+            <button class="level-btn" data-lesson="l136.html" disabled>Level 92: </button>
+            <button class="level-btn" data-lesson="l137.html" disabled>Level 93: </button>
+            <button class="level-btn" data-lesson="l138.html" disabled>Norway 16</button>
+            <button class="level-btn" data-lesson="l139.html" disabled>Level 95:</button>
+            <button class="level-btn" data-lesson="l140.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l141.html" >Level 96: </button>
+            <button class="level-btn" data-lesson="l142.html" disabled>Level 97 </button>
+            <button class="level-btn" data-lesson="l143.html" disabled>Level 98 </button>
+            <button class="level-btn" data-lesson="l144.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l145.html" >Level 99 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A9 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l146.html">Level 100: </button>
+            <button class="level-btn" data-lesson="l147.html" disabled>Level 101: </button>
+            <a class="level-btn" href="animation/html/l2V.html" >Norway Nature</a>
+            <button class="level-btn" data-lesson="l148.html" >Norway 17</button>
+            <button class="level-btn" data-lesson="l149.html" disabled>Level 102: </button>
+            <button class="level-btn" data-lesson="l150.html" disabled>Level 103: </button>
+            <button class="level-btn" data-lesson="l151.html" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l152.html" >Norway in Norway</button>
+            <a class="level-btn " href="animation/html/l5V.html" >Norway City</a>
+            <button class="level-btn" data-lesson="l153.html" >Level 104:</button>
+            <button class="level-btn" data-lesson="l154.html" disabled>Level 105: </button>
+            <button class="level-btn" data-lesson="l155.html" disabled>Level 106: </button>
+            <button class="level-btn" data-lesson="l156.html" disabled>Norway 18</button>
+            <button class="level-btn" data-lesson="l157.html" disabled>Level 107:</button>
+            <button class="level-btn" data-lesson="l158.html" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.html" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/html/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l159.html" >Level 108: </button>
+            <button class="level-btn" data-lesson="l160.html" disabled>Level 109 </button>
+            <button class="level-btn" data-lesson="l161.html" disabled>Level 110 </button>
+            <button class="level-btn" data-lesson="l162.html" >Practice in Norway</button>
+            <button class="level-btn" data-lesson="l163.html" >Level 111 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A10 soon</b></h1>
+            <h1><b>Medium</b></h1>
+
+        </div>
+    </main>
+    <script type="module" src="hub.js"></script>
+    
+</body>
+</html>

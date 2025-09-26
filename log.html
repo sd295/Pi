@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in to Code Lingo</title>
+
+    <!-- Google Font: Asimovian -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&display=swap" rel="stylesheet">
+
+    <style>
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Asimovian', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(15deg, black, rgb(55, 6, 103), rgb(55, 6, 103),rgb(15, 15, 55),rgb(55, 6, 103),rgb(55, 6, 103), black);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* LOGIN CONTAINER */
+        .login-container {
+            background: #262626;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .login-container h1 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px #ffeb3b; /* subtle futuristic glow */
+        }
+
+        /* SOCIAL BUTTONS */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+
+        .google-btn {
+            background: #fff;
+            color: #444;
+            border-color: #fff;
+        }
+
+        .google-btn:hover {
+            background: #f0f0f0;
+            transform: scale(1.03);
+        }
+
+        .github-btn {
+            background: #333;
+            color: #fff;
+            border-color: #444;
+        }
+
+        .github-btn:hover {
+            background: #444;
+            transform: scale(1.03);
+        }
+
+        /* SEPARATOR */
+        .separator {
+            margin: 20px 0;
+            position: relative;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .separator::before,
+        .separator::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #555;
+        }
+
+        .separator::before {
+            left: 0;
+        }
+
+        .separator::after {
+            right: 0;
+        }
+
+        /* MANUAL LOGIN */
+        .manual-login input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .manual-login button {
+            width: 100%;
+            padding: 12px;
+            background: #ffeb3b;
+            color: #222;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .manual-login button:hover {
+            background: #fdd835;
+            transform: scale(1.03);
+            text-shadow: 0 0 6px #ffeb3b;
+        }
+
+        #error-message {
+            color: #ff5252;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 25px;
+            }
+            .login-container h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Create an Account or Sign In</h1>
+        
+        <!-- Google Button -->
+        <a id="google-btn" class="social-btn google-btn">
+            <svg viewBox="0 0 24 24"><!-- SVG icon --></svg>
+            Sign in with Google
+        </a>
+
+        <!-- GitHub Button -->
+        <a id="github-btn" class="social-btn github-btn">
+            <svg viewBox="0 0 24 24"><!-- SVG icon --></svg>
+            Sign in with GitHub
+        </a>
+        
+        <div class="separator">or</div>
+        
+        <div class="manual-login">
+            <input type="email" id="email-input" placeholder="Enter your email">
+            <input type="password" id="password-input" placeholder="Enter your password">
+            <button id="login-btn">Login / Sign Up</button>
+            <p id="error-message" class="hidden"></p>
+        </div>
+    </div>
+
+    <script type="module" src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discovery: Sweden</title>
+    <meta http-equiv="refresh" content="90; url=../../index.html" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Body and Scene Styling */
+        body {
+            /* Using a background image of a Swedish forest */
+            background-image: linear-gradient(rgba(13, 27, 42, 0.85), rgba(13, 27, 42, 0.85)), url(https://images.unsplash.com/photo-1509224739542-52a5b6a71146?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80);
+            background-size: cover;
+            background-position: center;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .scene {
+            display: none;
+            width: 90%;
+            max-width: 600px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Make text more readable on background */
+        }
+
+        .scene.active {
+            display: block;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        /* --- SCENE 1: FLAG CHALLENGE (SWEDEN) --- */
+        .flag-container {
+            border: 2px solid white;
+            padding: 10px;
+            margin: 20px auto;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .flag-background-blue {
+            position: relative;
+            width: 320px; /* Official 16:10 ratio */
+            height: 200px;
+            background-color: #ccc; /* Default grey color */
+            cursor: pointer;
+        }
+
+        .flag-cross-vertical-yellow, .flag-cross-horizontal-yellow {
+            position: absolute; background-color: #ccc; cursor: pointer;
+        }
+        .flag-cross-vertical-yellow { top: 0; left: 100px; width: 40px; height: 100%; }
+        .flag-cross-horizontal-yellow { top: 80px; left: 0; width: 100%; height: 40px; }
+
+
+        .palette { margin-top: 20px; }
+        .color-btn {
+            width: 50px; height: 50px; border-radius: 50%; border: 3px solid white;
+            cursor: pointer; margin: 0 10px; box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        .color-btn:hover { transform: scale(1.1); }
+        /* Swedish Flag Colors */
+        .color-btn[data-color="#006aa7"] { background-color: #006aa7; }
+        .color-btn[data-color="#fecc00"] { background-color: #fecc00; }
+
+        /* --- SCENE 2: CAPITAL CHALLENGE --- */
+        #capital-input {
+            font-size: 1.5rem; padding: 10px; border-radius: 8px;
+            border: none; text-align: center; margin-top: 20px;
+        }
+
+        /* --- SCENE 3: AURORA REWARD --- */
+        .aurora-container {
+            position: fixed; top: 0; left: 0; width: 100vw;
+            height: 100vh; z-index: -1; overflow: hidden;
+        }
+        .aurora {
+            position: absolute; bottom: -20%; width: 100%; height: 70%; border-radius: 50%;
+            opacity: 0;
+            background: radial-gradient(ellipse at center, rgba(76, 224, 158, 0.5) 0%, rgba(50, 180, 220, 0.4) 40%, rgba(180, 50, 200, 0.3) 60%, rgba(76, 224, 158, 0) 80%);
+        }
+        .aurora-1 { animation: drift 8s infinite linear; }
+        .aurora-2 { animation: drift 12s infinite linear 2s; transform: scale(0.8) skew(10deg); }
+        .aurora-3 { animation: drift 10s infinite linear 4s; transform: scale(1.2) skew(-10deg); }
+
+        @keyframes drift {
+            0% { transform: translateY(50%) scale(1); opacity: 0; }
+            50% { transform: translateY(-50%) scale(1.5); opacity: 0.7; }
+            100% { transform: translateY(-150%) scale(1); opacity: 0; }
+        }
+
+        /* --- COMMON UI ELEMENTS --- */
+        button {
+            font-family: 'Nunito', sans-serif; font-size: 1.2rem; padding: 10px 20px;
+            border-radius: 8px; border: none; cursor: pointer; background-color: #58cc02;
+            color: white; margin-top: 20px; transition: background-color 0.2s;
+        }
+        button:hover { background-color: #70e000; }
+        .feedback { min-height: 24px; font-weight: bold; margin-top: 15px; font-size: 1.1rem; }
+        .feedback.correct { color: #58cc02; }
+        .feedback.incorrect { color: #ff4b4b; }
+    </style>
+</head>
+<body>
+
+    <!-- Audio elements for sound design -->
+    <audio id="correct-sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3" preload="auto"></audio>
+    <audio id="reward-music" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Swedish_national_anthem_%28instrumental%29.ogg" preload="auto"></audio>
+
+    <!-- SCENE 1: The Flag Challenge -->
+    <div id="scene-flag" class="scene active">
+        <h1>Välkommen! (Welcome!)</h1>
+        <p>Your first task is to build the Swedish flag. Select a color, then paint the flag.</p>
+        <div class="flag-container">
+            <div class="flag-background-blue">
+                <div class="flag-cross-vertical-yellow"></div>
+                <div class="flag-cross-horizontal-yellow"></div>
+            </div>
+        </div>
+        <div class="palette">
+            <button class="color-btn" data-color="#006aa7"></button>
+            <button class="color-btn" data-color="#fecc00"></button>
+        </div>
+        <p class="feedback"></p>
+        <button id="check-flag-btn">Check Flag</button>
+    </div>
+
+    <!-- SCENE 2: The Capital Challenge -->
+    <div id="scene-capital" class="scene">
+        <h1>Challenge 2: The City on Islands</h1>
+        <p>This capital city is spread across 14 islands where Lake Mälaren meets the Baltic Sea. What is its name?</p>
+        <input type="text" id="capital-input" placeholder="Type here...">
+        <p class="feedback"></p>
+        <button id="check-capital-btn">Check Answer</button>
+    </div>
+
+    <!-- SCENE 3: The Aurora Reward -->
+    <div id="scene-aurora" class="scene">
+        <div class="aurora-container">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+        </div>
+        <h1>Grattis! (Congratulations!)</h1>
+        <p>You have seen the beauty of Sverige and witnessed the magic of the Northern Lights.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- SOUND ELEMENTS ---
+            const correctSound = document.getElementById('correct-sound');
+            const rewardMusic = document.getElementById('reward-music');
+
+            // --- GENERAL SCENE SWITCHING LOGIC ---
+            const scenes = document.querySelectorAll('.scene');
+            let currentScene = 0;
+
+            function switchScene() {
+                if (scenes[currentScene]) {
+                    scenes[currentScene].classList.remove('active');
+                }
+                currentScene++;
+                if (scenes[currentScene]) {
+                    scenes[currentScene].classList.add('active');
+                    // Check if it's the final scene to play reward music
+                    if(currentScene === scenes.length - 1) {
+                        rewardMusic.volume = 0.4;
+                        rewardMusic.play();
+                    }
+                }
+            }
+            
+            // --- SCENE 1: FLAG CHALLENGE (SWEDEN) ---
+            const checkFlagBtn = document.getElementById('check-flag-btn');
+            const flagFeedback = document.querySelector('#scene-flag .feedback');
+            const flagBackground = document.querySelector('.flag-background-blue');
+            const yellowCrossV = document.querySelector('.flag-cross-vertical-yellow');
+            const yellowCrossH = document.querySelector('.flag-cross-horizontal-yellow');
+            const colorButtons = document.querySelectorAll('#scene-flag .color-btn');
+            let selectedColor = null;
+
+            colorButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    selectedColor = button.dataset.color;
+                    colorButtons.forEach(btn => btn.style.border = '3px solid white');
+                    button.style.border = '3px solid #58cc02';
+                });
+            });
+
+            function applyColor(element) {
+                if (selectedColor) {
+                    element.style.backgroundColor = selectedColor;
+                } else {
+                    flagFeedback.textContent = "Please select a color from the palette first!";
+                    flagFeedback.className = 'feedback incorrect';
+                }
+            }
+
+            flagBackground.addEventListener('click', () => applyColor(flagBackground));
+            yellowCrossV.addEventListener('click', (e) => { e.stopPropagation(); applyColor(yellowCrossV); });
+            yellowCrossH.addEventListener('click', (e) => { e.stopPropagation(); applyColor(yellowCrossH); });
+            
+            checkFlagBtn.addEventListener('click', () => {
+                const getNormalizedColor = (colorStr) => {
+                    const ctx = document.createElement('canvas').getContext('2d');
+                    ctx.fillStyle = colorStr; return ctx.fillStyle;
+                };
+
+                const correctBlue = getNormalizedColor('#006aa7'), correctYellow = getNormalizedColor('#fecc00');
+                const isBlueCorrect = getNormalizedColor(window.getComputedStyle(flagBackground).backgroundColor) === correctBlue;
+                const isYellowCorrect = getNormalizedColor(window.getComputedStyle(yellowCrossV).backgroundColor) === correctYellow && getNormalizedColor(window.getComputedStyle(yellowCrossH).backgroundColor) === correctYellow;
+                
+                if (isBlueCorrect && isYellowCorrect) {
+                    flagFeedback.textContent = 'Perfekt!';
+                    flagFeedback.className = 'feedback correct';
+                    correctSound.currentTime = 0; correctSound.play(); // Play sound
+                    setTimeout(switchScene, 1500);
+                } else {
+                    flagFeedback.textContent = 'Not quite right. A blue background with a yellow cross.';
+                    flagFeedback.className = 'feedback incorrect';
+                }
+            });
+
+            // --- SCENE 2: CAPITAL CHALLENGE (SWEDEN) ---
+            const checkCapitalBtn = document.getElementById('check-capital-btn');
+            const capitalInput = document.getElementById('capital-input');
+            const capitalFeedback = document.querySelector('#scene-capital .feedback');
+
+            capitalInput.addEventListener('keyup', (event) => { if (event.key === "Enter") { checkCapitalBtn.click(); }});
+
+            checkCapitalBtn.addEventListener('click', () => {
+                const userAnswer = capitalInput.value.trim().toLowerCase();
+                if (userAnswer === 'stockholm') {
+                    capitalFeedback.textContent = 'Correct! Stockholm is the one.';
+                    capitalFeedback.className = 'feedback correct';
+                    correctSound.currentTime = 0; correctSound.play(); // Play sound
+                    setTimeout(switchScene, 1500);
+                } else {
+                    capitalFeedback.textContent = "That's not it. It's sometimes called the 'Venice of the North'.";
+                    capitalFeedback.className = 'feedback incorrect';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

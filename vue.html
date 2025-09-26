@@ -1,0 +1,279 @@
+<!-- html.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Veo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="l.js"></script>
+    <!-- The data-subject attribute is CRITICAL -->
+     <header>
+    <div class="header-content">
+        <!-- This is a link back to the main subject selection -->
+        
+
+        <!-- 
+            NEW: User Profile Section
+            This will be hidden by default and shown by JavaScript when logged in.
+        -->
+        <div id="user-profile" class="hidden">
+            <span id="user-name"></span>
+            <img id="user-photo" src="default-avatar.png" alt="Profile Picture">
+            <button id="logout-btn" class="logout-btn-header">Logout</button>
+        </div>
+    </div>
+    </header>
+    <main class="hub-container" data-subject="vue">
+        <a href="index.html" class="back-link">&larr; Back to Subjects</a>
+        <h1>Vue.js Lessons</h1>
+        <p>WE RECOMAND PLAYING EVERY LEVEL NOT ONLY FOR THE FREE ANIMATION.</p>
+        <div class="level-selection">
+            <h1><b>Section </b></h1>
+            <h1><b>A1</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l1.vue">Level 1: </button>
+            <button class="level-btn" data-lesson="l2.vue" disabled>Level 2: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l5.vue" >Sweden 1</button>
+            <button class="level-btn" data-lesson="l3.vue" disabled>Level 3: </button>
+            <button class="level-btn" data-lesson="l4.vue" disabled>Level 4: </button>
+            <button class="level-btn" data-lesson="l6.vue" disabled >first Site </button>
+            <button class="level-btn" data-lesson="l7.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l8.vue" >Level 5:</button>
+            <button class="level-btn" data-lesson="l9.vue" disabled>Level 6: </button>
+            <button class="level-btn" data-lesson="l10.vue" disabled>Level 7: </button>
+            <button class="level-btn" data-lesson="l11.vue" disabled>Sweden 2</button>
+            <button class="level-btn" data-lesson="l12.vue" disabled>Level 8:</button>
+            <button class="level-btn" data-lesson="l13.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l15.vue" >Level 9: </button>
+            <button class="level-btn" data-lesson="l16.vue" disabled>Level 10 </button>
+            <button class="level-btn" data-lesson="l17.vue" disabled>Level 11 </button>
+            <button class="level-btn" data-lesson="l18.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l19.vue" >Level 12 </button>
+            <h1>Section</h1>
+            <a class="movie" href="Movie/Movie1.html" >A2</a>
+            <h1>Medium</h1>
+            <button class="level-btn" data-lesson="l20.vue">Level 13: </button>
+            <button class="level-btn" data-lesson="l21.vue" disabled>Level 14: </button>
+            <a class="level-btn" href="animation/js/l14V.html" >Sweden Fishing</a>
+            <button class="level-btn" data-lesson="l22.vue" >Sweden 3</button>
+            <button class="level-btn" data-lesson="l23.vue" disabled>Level 15: </button>
+            <button class="level-btn" data-lesson="l24.vue" disabled>Level 16: </button>
+            <button class="level-btn" data-lesson="l25.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l26.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l27.vue" >Level 17:</button>
+            <button class="level-btn" data-lesson="l28.vue" disabled>Level 18: </button>
+            <button class="level-btn" data-lesson="l29.vue" disabled>Level 19: </button>
+            <button class="level-btn" data-lesson="l30.vue" disabled>Sweden 4</button>
+            <button class="level-btn" data-lesson="l31.vue" disabled>Level 20:</button>
+            <button class="level-btn" data-lesson="l32.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l33.vue" >Level 21: </button>
+            <button class="level-btn" data-lesson="l34.vue" disabled>Level 22 </button>
+            <button class="level-btn" data-lesson="l35.vue" disabled>Level 23 </button>
+            <button class="level-btn" data-lesson="l36.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l37.vue" >Level 24 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A3 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l38.vue">Level 25: </button>
+            <button class="level-btn" data-lesson="l39.vue" disabled>Level 26: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l40.vue" >Sweden 5</button>
+            <button class="level-btn" data-lesson="l41.vue" disabled>Level 27: </button>
+            <button class="level-btn" data-lesson="l42.vue" disabled>Level 28: </button>
+            <button class="level-btn" data-lesson="l43.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l44.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l45.vue" >Level 29:</button>
+            <button class="level-btn" data-lesson="l46.vue" disabled>Level 30: </button>
+            <button class="level-btn" data-lesson="l47.vue" disabled>Level 31: </button>
+            <button class="level-btn" data-lesson="l48.vue" disabled>Sweden 6</button>
+            <button class="level-btn" data-lesson="l49.vue" disabled>Level 32:</button>
+            <button class="level-btn" data-lesson="l50.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l51.vue" >Level 33: </button>
+            <button class="level-btn" data-lesson="l52.vue" disabled>Level 34 </button>
+            <button class="level-btn" data-lesson="l53.vue" disabled>Level 35 </button>
+            <button class="level-btn" data-lesson="l54.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l55.vue" >Level 36 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A4 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l56.vue">Level 37: </button>
+            <button class="level-btn" data-lesson="l57.vue" disabled>Level 38: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l58.vue" >Sweden 7</button>
+            <button class="level-btn" data-lesson="l59.vue" disabled>Level 39: </button>
+            <button class="level-btn" data-lesson="l60.vue" disabled>Level 40: </button>
+            <button class="level-btn" data-lesson="l61.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l62.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l63.vue" >Level 41:</button>
+            <button class="level-btn" data-lesson="l64.vue" disabled>Level 44: </button>
+            <button class="level-btn" data-lesson="l65.vue" disabled>Level 45: </button>
+            <button class="level-btn" data-lesson="l66.vue" disabled>Sweden 8</button>
+            <button class="level-btn" data-lesson="l67.vue" disabled>Level 46:</button>
+            <button class="level-btn" data-lesson="l68.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l69.vue" >Level 47: </button>
+            <button class="level-btn" data-lesson="l70.vue" disabled>Level 48 </button>
+            <button class="level-btn" data-lesson="l71.vue" disabled>Level 49 </button>
+            <button class="level-btn" data-lesson="l72.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l73.vue" >Level 50 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A5 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l74.vue">Level 51: </button>
+            <button class="level-btn" data-lesson="l75.vue" disabled>Level 52: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l76.vue" >Sweden 9</button>
+            <button class="level-btn" data-lesson="l77.vue" disabled>Level 53: </button>
+            <button class="level-btn" data-lesson="l78.vue" disabled>Level 54: </button>
+            <button class="level-btn" data-lesson="l79.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l80.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l81.vue" >Level 55:</button>
+            <button class="level-btn" data-lesson="l82.vue" disabled>Level 56: </button>
+            <button class="level-btn" data-lesson="l83.vue" disabled>Level 57: </button>
+            <button class="level-btn" data-lesson="l84.vue" disabled>Sweden 10</button>
+            <button class="level-btn" data-lesson="l85.vue" disabled>Level 58:</button>
+            <button class="level-btn" data-lesson="l86.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l87.vue" >Level 59: </button>
+            <button class="level-btn" data-lesson="l88.vue" disabled>Level 60 </button>
+            <button class="level-btn" data-lesson="l89.vue" disabled>Level 61 </button>
+            <button class="level-btn" data-lesson="l90.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l91.vue" >Level 62 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A6 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l92.vue">Level 63: </button>
+            <button class="level-btn" data-lesson="l93.vue" disabled>Level 64: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l94.vue" >Sweden 11</button>
+            <button class="level-btn" data-lesson="l95.vue" disabled>Level 65: </button>
+            <button class="level-btn" data-lesson="l96.vue" disabled>Level 66: </button>
+            <button class="level-btn" data-lesson="l97.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l98.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l99.vue" >Level 67:</button>
+            <button class="level-btn" data-lesson="l100.vue" disabled>Level 68: </button>
+            <button class="level-btn" data-lesson="l101.vue" disabled>Level 69: </button>
+            <button class="level-btn" data-lesson="l102.vue" disabled>Sweden 12</button>
+            <button class="level-btn" data-lesson="l103.vue" disabled>Level 70:</button>
+            <button class="level-btn" data-lesson="l104.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l105.vue" >Level 71: </button>
+            <button class="level-btn" data-lesson="l106.vue" disabled>Level 72 </button>
+            <button class="level-btn" data-lesson="l107.vue" disabled>Level 73 </button>
+            <button class="level-btn" data-lesson="l108.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l109.vue" >Level 74 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A7 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l110.vue">Level 75: </button>
+            <button class="level-btn" data-lesson="l111.vue" disabled>Level 76: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l112.vue" >Sweden 13</button>
+            <button class="level-btn" data-lesson="l113.vue" disabled>Level 77: </button>
+            <button class="level-btn" data-lesson="l114.vue" disabled>Level 78: </button>
+            <button class="level-btn" data-lesson="l115.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l116.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l117.vue" >Level 79:</button>
+            <button class="level-btn" data-lesson="l118.vue" disabled>Level 80: </button>
+            <button class="level-btn" data-lesson="l119.vue" disabled>Level 81: </button>
+            <button class="level-btn" data-lesson="l120.vue" disabled>Sweden 14</button>
+            <button class="level-btn" data-lesson="l121.vue" disabled>Level 82:</button>
+            <button class="level-btn" data-lesson="l122.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l123.vue" >Level 83: </button>
+            <button class="level-btn" data-lesson="l124.vue" disabled>Level 84 </button>
+            <button class="level-btn" data-lesson="l125.vue" disabled>Level 85 </button>
+            <button class="level-btn" data-lesson="l126.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l127.vue" >Level 86 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A8 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l128.vue">Level 87: </button>
+            <button class="level-btn" data-lesson="l129.vue" disabled>Level 88: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l130.vue" >Sweden 15</button>
+            <button class="level-btn" data-lesson="l131.vue" disabled>Level 89: </button>
+            <button class="level-btn" data-lesson="l132.vue" disabled>Level 90: </button>
+            <button class="level-btn" data-lesson="l133.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l134.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l135.vue" >Level 91:</button>
+            <button class="level-btn" data-lesson="l136.vue" disabled>Level 92: </button>
+            <button class="level-btn" data-lesson="l137.vue" disabled>Level 93: </button>
+            <button class="level-btn" data-lesson="l138.vue" disabled>Sweden 16</button>
+            <button class="level-btn" data-lesson="l139.vue" disabled>Level 95:</button>
+            <button class="level-btn" data-lesson="l140.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l141.vue" >Level 96: </button>
+            <button class="level-btn" data-lesson="l142.vue" disabled>Level 97 </button>
+            <button class="level-btn" data-lesson="l143.vue" disabled>Level 98 </button>
+            <button class="level-btn" data-lesson="l144.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l145.vue" >Level 99 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A9 soon</b></h1>
+            <h1><b>Medium</b></h1>
+            <button class="level-btn" data-lesson="l146.vue">Level 100: </button>
+            <button class="level-btn" data-lesson="l147.vue" disabled>Level 101: </button>
+            <a class="level-btn" href="animation/js/l2V.html" >Sweden Nature</a>
+            <button class="level-btn" data-lesson="l148.vue" >Sweden 17</button>
+            <button class="level-btn" data-lesson="l149.vue" disabled>Level 102: </button>
+            <button class="level-btn" data-lesson="l150.vue" disabled>Level 103: </button>
+            <button class="level-btn" data-lesson="l151.vue" disabled >fix Site </button>
+            <button class="level-btn" data-lesson="l152.vue" >Sweden in Sweden</button>
+            <a class="level-btn " href="animation/js/l5V.html" >Sweden City</a>
+            <button class="level-btn" data-lesson="l153.vue" >Level 104:</button>
+            <button class="level-btn" data-lesson="l154.vue" disabled>Level 105: </button>
+            <button class="level-btn" data-lesson="l155.vue" disabled>Level 106: </button>
+            <button class="level-btn" data-lesson="l156.vue" disabled>Sweden 18</button>
+            <button class="level-btn" data-lesson="l157.vue" disabled>Level 107:</button>
+            <button class="level-btn" data-lesson="l158.vue" disabled>2Site</button>
+            <!--<button class="level-btn" data-lesson="l14.vue" disabled>3Site</button> -->
+            <a class="level-btn " href="animation/js/l11V.html" > More animation by us</a>
+            <button class="level-btn" data-lesson="l159.vue" >Level 108: </button>
+            <button class="level-btn" data-lesson="l160.vue" disabled>Level 109 </button>
+            <button class="level-btn" data-lesson="l161.vue" disabled>Level 110 </button>
+            <button class="level-btn" data-lesson="l162.vue" >Practice in Sweden</button>
+            <button class="level-btn" data-lesson="l163.vue" >Level 111 </button>
+            <h1><b>Section </b></h1>
+            <h1><b>A10 soon</b></h1>
+            <h1><b>Medium</b></h1>
+
+        </div>
+    </main>
+    <script type="module" src="hub.js"></script>
+    <script type="module">
+        // This user-profile script is needed for the header
+        import { auth } from './firebase-config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        const userProfile = document.getElementById('user-profile'), userNameEl = document.getElementById('user-name'), userPhotoEl = document.getElementById('user-photo');
+        onAuthStateChanged(auth, (user) => { if (user) { userProfile.classList.remove('hidden'); userNameEl.textContent = user.displayName || user.email; userPhotoEl.src = user.photoURL || 'default-avatar.png'; } });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!-- rules.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Nord - Rules</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base, Variables & Animated Background --- */
+        :root {
+            --dark-blue: #0a192f;
+            --light-slate: #ccd6f6;
+            --slate: #8892b0;
+            --green: #64ffda;
+            --white: #ffffff;
+            --red: #ff4b4b;
+            --font-family: 'Nunito', sans-serif;
+            --title-font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--slate);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background: linear-gradient(15deg, black, rgb(55, 6, 103),black,black, rgb(55, 6, 103),rgb(55, 6, 103));
+            background-size: 200% 200%;
+            animation: pan-background 200s ease-in-out infinite alternate;
+
+
+
+
+        }
+
+        /* --- Animation Keyframes --- */
+        @keyframes pan-background {
+        from {
+        background-position: 0 0;
+        }
+        to {
+        background-position: 100% 0%;
+        }
+        }
+
+
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Main Container & Entry Animation --- */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            opacity: 0;
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+        }
+
+        .rule-book-container {
+            width: 100%;
+            max-width: 700px;
+            background-color: rgba(10, 25, 47, 0.85);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(136, 146, 176, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- Back Link --- */
+        .back-link {
+            display: inline-block;
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+            transform: translateX(-5px);
+        }
+
+        /* --- Typography & Rule Styling --- */
+        h1 {
+            font-family: var(--title-font-family);
+            color: var(--light-slate);
+            font-size: 3rem;
+            text-align: center;
+            margin: 0 0 30px 0;
+            border-bottom: 2px solid var(--slate);
+            padding-bottom: 15px;
+        }
+
+        .rule-list { list-style: none; padding: 0; margin: 0; }
+
+        .rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(136, 146, 176, 0.2);
+            opacity: 0;
+            animation: slideUpFadeIn 0.7s ease-out forwards;
+        }
+        .rule-list .rule-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .rule-item:nth-child(1) { animation-delay: 0.5s; }
+        .rule-item:nth-child(2) { animation-delay: 0.7s; }
+        .rule-item:nth-child(3) { animation-delay: 0.9s; }
+
+        .rule-icon { font-size: 2.5rem; line-height: 1; }
+        .rule-text h2 { font-family: var(--font-family); font-weight: 900; font-size: 1.5rem; color: var(--light-slate); margin: 0 0 5px 0; }
+        .rule-text p { font-size: 1.1rem; line-height: 1.6; margin: 0; }
+
+        /* --- Developer Footer --- */
+        .developer-footer {
+            text-align: center;
+            color: var(--slate);
+            opacity: 0;
+            animation: slideUpFadeIn 0.8s ease-out 1.2s forwards;
+        }
+
+        .developer-footer .developer-name {
+            margin: 0 0 15px 0;
+            font-size: 1rem;
+        }
+        .developer-footer .developer-name span {
+            color: var(--light-slate);
+            font-weight: 700;
+        }
+
+        /* NEW: Creator's Note Styling */
+        .creator-note {
+            font-style: italic;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            max-width: 450px; /* Constrain width for readability */
+            margin: 25px auto; /* Center it with vertical space */
+            opacity: 0;
+            /* Appears after the 'Developed by' line */
+            animation: slideUpFadeIn 0.8s ease-out 1.4s forwards;
+        }
+
+        .creator-note strong {
+            color: var(--light-slate);
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+             /* Appears last for a final flourish */
+            animation: slideUpFadeIn 0.8s ease-out 1.6s forwards;
+        }
+
+        .social-link {
+            display: inline-block;
+            color: var(--green);
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-link:hover { transform: translateY(-3px); color: var(--white); }
+        .social-link svg { width: 32px; height: 32px; fill: currentColor; }
+
+    </style>
+</head>
+<body>
+    
+
+    <div class="page-wrapper">
+        <div class="rule-book-container">
+            <a href="index.html" class="back-link">&larr; Back to Hub</a>
+            
+            <h1>Pi Nord New User Note </h1>
+
+            <ul class="rule-list">
+                <li class="rule-item"> <span class="rule-icon"></span> <div class="rule-text"> <h2>Practice, Not Progress</h2> <p> Special lessons, like animations and site fixes, are designed for practice. Your work on these is <strong>not saved</strong> to your profile. </p> </div> </li>
+                <li class="rule-item"> <span class="rule-icon"></span> <div class="rule-text"> <h2>No XP Awarded</h2> <p> You will not earn any XP for completing these special practice lessons. They are purely for honing your skills. </p> </div> </li>
+                <li class="rule-item"> <span class="rule-icon"></span> <div class="rule-text"> <h2>No Streak Count</h2> <p> Completing these lessons <strong>will not count</strong> towards maintaining or extending your daily learning streak. </p> </div> </li>
+                
+                
+            </ul>
+        </div>
+
+        <!-- NEW: Developer Footer Section -->
+        <footer class="developer-footer">
+            <p class="developer-name">Developed by <span><i>Seridarivus</i></span></p>
+
+            <!-- The new message is here -->
+            <p class="creator-note">
+                This project is provided free of charge for personal use only. Redistribution, sharing, or commercial use is strictly prohibited without prior authorization. Companies must complete a transaction before using this project for commercial purposes. <a href="Pi.nord.html" class="bac-link">Learn more about Pi Nord company usage</a>.
+
+            </p>
+            
+            <div class="social-links">
+                <!-- TikTok Link -->
+                <a href="https://www.tiktok.com/@nordic_shooting_star" target="_blank" class="social-link" title="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.05-4.85-.38-6.93-1.93-1.55-1.12-2.36-2.9-2.61-4.75-.23-1.78.22-3.59.92-5.11.78-1.7 2.18-3.03 3.82-3.86 1.13-.57 2.36-.88 3.63-.98.02 2.45.01 4.9.01 7.35 0 .44-.02.89-.07 1.33-.33.82-.93 1.48-1.68 1.83-.8.36-1.7.4-2.58.21-.87-.19-1.64-.61-2.22-1.22-.64-.68-1.02-1.52-1.12-2.42-.13-1.17.2-2.38.83-3.32.48-.73 1.12-1.34 1.86-1.79.73-.44 1.53-.7 2.37-.77.01-2.43.01-4.86.01-7.29 0-.32.03-.64.08-.95A4.32 4.32 0 0 1 12.525.02z"/></svg>
+                </a>
+                <!-- YouTube Link -->
+                <a href="https://www.youtube.com/@seridarivus" target="_blank" class="social-link" title="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,15.464V8.536L16,12L10,15.464z"/></svg>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

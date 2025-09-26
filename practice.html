@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <!-- This is a link back to the main subject selection -->
+            <a href="index.html" class="back-link">&larr; All Subjects</a>
+
+            <!-- 
+                FIX: Removed the duplicate iframe overlay from here. 
+                It should only exist once, at the end of the page.
+            -->
+
+            <!-- User Profile Section -->
+            <div id="user-profile" class="hidden">
+                <span id="user-name"></span>
+                <img id="user-photo" src="default-avatar.png" alt="Profile Picture">
+                <button id="logout-btn" class="logout-btn-header">Logout</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="practice-container">
+        <div class="instructions-panel">
+            <h1 id="project-title">Loading...</h1>
+            <p id="project-instructions"></p>
+            <button id="run-btn">Run Code</button>
+            <a href="index.html" class="back-link hub-link">Back to Hub</a>
+        </div>
+        <div class="editor-panel">
+            <textarea id="code-editor" spellcheck="false"></textarea>
+            <iframe id="live-preview" title="Live Preview"></iframe>
+        </div>
+    </main>
+    
+    <footer>
+        
+        <button id="open-iframe-btn" class="ai">PLI6</button>
+    </footer>
+
+    <!-- This is the single, correct iframe overlay -->
+    <div id="iframe-overlay" class="iframe-overlay">
+        <div class="iframe-container">
+            <button id="close-iframe-btn" class="close-btn">&times;</button>
+            <iframe 
+                title="Chat Interface"
+                src="pli.html"
+                width="100%"
+                height="600"
+                style="border:none;">
+            </iframe>
+        </div>
+    </div>
+    
+    <!-- Your existing scripts -->
+    <script src="practice.js"></script>
+    <script type="module">
+        // Import the Firebase services you need
+        import { auth } from './firebase-config.js';
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        // Get references to the HTML elements
+        const userProfile = document.getElementById('user-profile');
+        const userNameEl = document.getElementById('user-name');
+        const userPhotoEl = document.getElementById('user-photo');
+        const logoutBtn = document.getElementById('logout-btn');
+        const mainContent = document.querySelector('main');
+
+        // Hide main content until we know if the user is logged in
+        mainContent.style.display = 'none';
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // USER IS SIGNED IN
+                mainContent.style.display = 'flex'; // Use flex to match your layout
+                userProfile.classList.remove('hidden');
+                userNameEl.textContent = user.displayName || user.email;
+                userPhotoEl.src = user.photoURL || 'default-avatar.png';
+                logoutBtn.addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        window.location.href = 'log.html';
+                    }).catch((error) => {
+                        console.error("Logout Error:", error);
+                    });
+                });
+            } else {
+                // USER IS SIGNED OUT
+                window.location.href = 'log.html';
+            }
+        });
+    </script>
+
+    <!-- NEW: Add this script for the iframe overlay controls -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openBtn = document.getElementById('open-iframe-btn');
+            const closeBtn = document.getElementById('close-iframe-btn');
+            const overlay = document.getElementById('iframe-overlay');
+
+            if(openBtn && closeBtn && overlay) {
+                // Event listener to show the overlay and disable scrolling
+                openBtn.addEventListener('click', () => {
+                    overlay.classList.add('show');
+                    document.body.classList.add('no-scroll');
+                });
+
+                // Event listener to hide the overlay and enable scrolling
+                closeBtn.addEventListener('click', () => {
+                    overlay.classList.remove('show');
+                    document.body.classList.remove('no-scroll');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

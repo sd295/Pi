@@ -1,0 +1,164 @@
+<!-- html.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Nord Release Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base, Variables & Animated Background --- */
+        :root {
+            --dark-blue: #0a192f;
+            --light-slate: #ccd6f6;
+            --slate: #8892b0;
+            --green: #64ffda;
+            --white: #ffffff;
+            --font-family: 'Nunito', sans-serif; /* Kept for consistency */
+        }
+
+        body {
+            font-family: Asimovian;
+            color: var(--slate); /* Default text color from new palette */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background: linear-gradient(15deg, black, rgb(55, 6, 103),black,black, rgb(55, 6, 103),black, rgb(55, 6, 103));
+            /* Key for animated background */
+            background-size: 400% 400%;
+            animation: pan-background 30s ease-in-out infinite alternate;
+
+        }
+
+        /* --- Animation Keyframes --- */
+        @keyframes pan-background {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* --- Main Container & Entry Animation --- */
+        .content-wrapper {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(10, 25, 47, 0.85); /* Semi-transparent dark blue for readability */
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(136, 146, 176, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            /* Animate the entire container on page load */
+            animation: slideUpFadeIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* --- Back Link Animation --- */
+        .back-link {
+            display: inline-block;
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, color 0.3s ease;
+            opacity: 0;
+            animation: slideUpFadeIn 0.6s ease-out 0.2s forwards;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+            transform: translateX(-5px);
+        }
+
+        /* --- Header Animations --- */
+        h1 {
+            color: var(--light-slate);
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--slate);
+            padding-bottom: 10px;
+            opacity: 0;
+            animation: slideUpFadeIn 0.6s ease-out 0.4s forwards;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--slate);
+            font-weight: 700;
+            margin: 15px 0;
+            padding-left: 10px;
+            border-left: 3px solid var(--green);
+            opacity: 0;
+            animation: slideInFromLeft 0.6s ease-out forwards;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        h2:hover {
+            transform: translateY(-3px) translateX(5px);
+            color: var(--light-slate);
+        }
+
+        /* Staggered animation delays for the cascading "waterfall" effect */
+        .content-wrapper h2:nth-of-type(1) { animation-delay: 0.6s; }
+        .content-wrapper h2:nth-of-type(2) { animation-delay: 0.7s; }
+        .content-wrapper h2:nth-of-type(3) { animation-delay: 0.8s; }
+        .content-wrapper h2:nth-of-type(4) { animation-delay: 0.9s; }
+        .content-wrapper h2:nth-of-type(5) { animation-delay: 1.0s; }
+
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <a href="index.html" class="back-link">&larr; All Subjects</a>
+        <h1>Update Notes:</h1>
+        <h2>9b1-  PLI6.X5LTE along with Gemini are here to help you be better at coding with explain the problem and help solving.</h2>
+        <h2>8.0-  PLI 6LTE is here </h2>
+        <h2>7.0- <a href="part.html" class="bac-link">Movies partner(Lumina+)</a>new collab, movies, new lection, new font, new bg, new particle</h2>
+        <h2>7.0b3- <a href="protest.html" class="bac-link">Interest of Romania educational system</a>, 2 new Vue.js lection</h2>
+        <h2>7.0b2- New dark red fire particle</h2>
+        <h2>7.0b1- New font, new bg color, first look at movie system</h2>
+        <h2>6.1- over 400 levels anounced, 81 new animation anounced</h2>
+        <h2>6.0-React section 1 part 1, -1 fix site lection in each language, Section target introduce</h2>
+        <h2>5.10-all 4 main language are now completed with section 1. Section 2 is cooming in multiple Updates, because the size is 24 files per language, so 96 files in total. </h2>
+        <h2>5.4-7 new css lection, 1 animation to finland</h2>
+        <h2>5.1- New License <a href="Pi.nord.html" class="bac-link">Learn more about Pi Nord company usage and License</a></h2>
+        <h2>5.0- New animation better loading and better overall, New profile page, New User Notes(Pi Nord rules)</h2>
+        <h2>4.6- New site style for Mouse and keyboard interaction</h2>
+        <h2>4.5(1000 likes)-New minigame type, Update Note page</h2>
+        <h2>4.1-Bug fixes, React.js soon, Node.js soon</h2>
+        <h2>4.0-Vue.j(18), Js(18), HTML(18), CSS(10)</h2>
+    </div>
+</body>
+</html>

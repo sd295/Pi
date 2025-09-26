@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discovery: Finland</title>
+    
+    <link rel="stylesheet" href="il.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- SCENE 1: The Flag Challenge -->
+    <div id="scene-flag" class="scene active">
+        <h1>Challenge 1: Build the Finnish Flag</h1>
+        <p>The flag of Finland is a white background with a blue Nordic cross. Use CSS to build it!</p>
+        <div class="flag-container">
+            <div class="flag-background">
+                <div class="flag-cross-vertical"></div>
+                <div class="flag-cross-horizontal"></div>
+            </div>
+        </div>
+        <div class="palette">
+            <button class="color-btn" data-color="white"></button>
+            <button class="color-btn" data-color="blue"></button>
+            <button class="color-btn" data-color="red"></button>
+        </div>
+        <p class="feedback"></p>
+        <button id="check-flag-btn">Check Flag</button>
+    </div>
+
+    <!-- SCENE 2: The Capital Challenge -->
+    <div id="scene-capital" class="scene">
+        <h1>Challenge 2: The Capital City</h1>
+        <p>What is the capital of Finland? Type your answer below.</p>
+        <input type="text" id="capital-input" placeholder="Type here...">
+        <p class="feedback"></p>
+        <button id="check-capital-btn">Check Answer</button>
+    </div>
+
+    <!-- SCENE 3: The Aurora Reward -->
+    <div id="scene-aurora" class="scene">
+        <div class="aurora-container">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+            <div class="aurora aurora-3"></div>
+        </div>
+        <h1>Lesson Complete!</h1>
+        <p>You've discovered the beauty of Suomi (Finland). You may exit now</p>
+    
+    </div>
+
+    <script src="il.js"></script>
+</body>
+</html>

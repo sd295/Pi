@@ -1,0 +1,205 @@
+<!-- license.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Nord - Site-Use License</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base, Variables & Animated Background --- */
+        :root {
+            --dark-blue: #0a192f;
+            --light-slate: #ccd6f6;
+            --slate: #8892b0;
+            --green: #64ffda;
+            --white: #ffffff;
+            --font-family: 'Nunito', sans-serif;
+            --title-font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--slate);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background: linear-gradient(15deg, black, rgb(55, 6, 103),black,black, rgb(55, 6, 103),rgb(55, 6, 103));
+            background-size: 200% 200%;
+            animation: pan-background 25s ease-in-out infinite alternate;
+        }
+
+        /* --- Animation Keyframes --- */
+        @keyframes pan-background {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideUpFadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Main Container & Entry Animation --- */
+        .license-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: rgba(10, 25, 47, 0.85);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(136, 146, 176, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: slideUpFadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s forwards;
+        }
+
+        /* --- Back Link --- */
+        .back-link {
+            display: inline-block;
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, color 0.3s ease;
+            
+        }
+
+        .back-link:hover {
+            color: var(--white);
+            transform: translateX(-5px);
+        }
+
+        /* --- Typography & License Styling --- */
+        h1 {
+            font-family: var(--title-font-family);
+            color: var(--light-slate);
+            font-size: 2.8rem;
+            text-align: center;
+            margin: 0 0 30px 0;
+            border-bottom: 2px solid var(--slate);
+            padding-bottom: 15px;
+        }
+
+        .terms-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            counter-reset: term-counter; /* Initialize a counter for the list items */
+        }
+
+        .term-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 50px; /* Space for the large number */
+            border-bottom: 1px solid rgba(136, 146, 176, 0.15);
+            padding-bottom: 25px;
+            /* Staggered animation for each term */
+            opacity: 0;
+            animation: slideUpFadeIn 0.7s ease-out forwards;
+        }
+        .terms-list .term-item:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        /* The large number before each clause */
+        .term-item::before {
+            counter-increment: term-counter;
+            content: counter(term-counter);
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--green);
+            opacity: 0.5;
+        }
+
+        /* Stagger the animation of each rule */
+        .term-item:nth-child(1) { animation-delay: 0.5s; }
+        .term-item:nth-child(2) { animation-delay: 0.7s; }
+        .term-item:nth-child(3) { animation-delay: 0.9s; }
+        .term-item:nth-child(4) { animation-delay: 1.1s; }
+
+        .term-item h2 {
+            font-family: var(--font-family);
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: var(--light-slate);
+            margin: 0 0 10px 0;
+        }
+
+        .term-item p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin: 5px 0;
+        }
+        
+        /* Style for highlighting key restrictions */
+        .term-item strong {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .agreement-clause {
+            text-align: center;
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.1rem;
+            opacity: 0;
+            animation: slideUpFadeIn 0.7s ease-out 1.4s forwards;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="license-container">
+        <a href="index.html" class="back-link">&larr; Back to Hub</a>
+        
+        <h1>Pi Nord License 2025</h1>
+
+        <ol class="terms-list">
+            <li class="term-item">
+                <h2>Scope of License:</h2>
+                <p>- You are granted the right to <strong>access and use the site as provided</strong>.</p>
+                <p>- <strong>No other use is permitted</strong>: downloading, copying, modifying, redistributing, or reverse-engineering the code or assets is strictly prohibited.</p>
+            </li>
+            <li class="term-item">
+                <h2>Personal or Commercial Use:</h2>
+                <p>- All users, whether individuals or companies, may only use the site through the official interface.</p>
+                <p>- Company or commercial use beyond normal access requires an authorized transaction with Pi Nord.</p>
+            </li>
+            <li class="term-item">
+                <h2>Restrictions:</h2>
+                <p>- You may not attempt to replicate, clone, or create derivative works from the site.</p>
+                <p>- Accessing or using the site in any manner not explicitly permitted is a violation of this license.</p>
+            </li>
+            <li class="term-item">
+                <h2>Enforcement:</h2>
+                <p>- Pi Nord reserves all rights not expressly granted in this license.</p>
+                <p>- Unauthorized use may result in legal action.</p>
+            </li>
+            <li class="term-item">
+                <h2>Contact:</h2>
+                <p>- <strong>seridarivus@gmail.com</strong></p>
+            </li>
+        </ol>
+
+        
+        <p class="agreement-clause">
+            Thanks Lumina+ for movies(<a href="https://luminaplus.hu/en" class="bac-link">Lumina+</a>)
+        </p>
+        <p class="agreement-clause">
+            By accessing or using this site, you agree to comply with these terms.
+        </p>
+    </div>
+
+</body>
+</html>

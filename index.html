@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Nord</title>
+    <!-- Link to your external stylesheet -->
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    
+    <header>
+        <div class="header-content">
+            <a href="rn.html" class="bac-link">Update Notes &rarr;</a>
+            <a href="nun.html" class="bac-link">&larr;READ THIS</a>
+
+            <div id="user-profile" class="hidden">
+                <a href="profile.html" id="profile-link">
+                    <span id="user-name"></span>
+                    <img id="user-photo" src="default-avatar.png" alt="Profile Picture">
+                </a>
+                <button id="logout-btn" class="logout-btn-header">Logout</button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="hub-container">
+        <h1>Pi Nord 9b1</h1>
+        <p>The newest learning sytem that combine lection with movies</p>
+        <div class="subject-selection">
+            <a href="html.html" class="subject-btn html-btn"><h2>HTML</h2><p>The structure of the web using Norway</p></a>
+            <a href="css.html" class="subject-btn css-btn"><h2>CSS</h2><p>The style of the web using Finland</p></a>
+            <a href="js.html" class="subject-btn js-btn"><h2>JavaScript</h2><p>Sweden</p></a>
+            <a href="vue.html" class="subject-btn vue-btn"><h2>Vue.js</h2><p>Sweden</p></a>
+            <a href="react.html" class="subject-btn react-btn"><h2>React.js</h2><p>Ukraine Coming Q4 2025 (v6.0)</p></a>
+            <a href="node.html" class="subject-btn node-btn"><h2>Node.js</h2><p>Germany Coming Q2 2026 (v7.0)</p></a>
+        </div>
+    </main>
+
+    <footer>
+        <a href="part.html" class="protest">partners</a>
+        <button id="open-iframe-btn" class="ai">PLI6.X5</button>
+    </footer>
+
+    <div id="iframe-overlay" class="iframe-overlay">
+        <div class="iframe-container">
+            <button id="close-iframe-btn" class="close-btn">&times;</button>
+            <iframe 
+    title="Chat Interface"
+    src="pli.html"
+    width="100%"
+    height="600"
+    style="border:none;">
+</iframe>
+        </div>
+    </div>
+        
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="l.js"></script>
+    <script type="module">
+        import { auth } from './firebase-config.js';
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+        const userProfile = document.getElementById('user-profile');
+        const userNameEl = document.getElementById('user-name');
+        const userPhotoEl = document.getElementById('user-photo');
+        const logoutBtn = document.getElementById('logout-btn');
+        const mainContent = document.querySelector('main');
+        const openBtn = document.getElementById('open-iframe-btn');
+        const closeBtn = document.getElementById('close-iframe-btn');
+        const overlay = document.getElementById('iframe-overlay');
+
+        openBtn.addEventListener('click', () => {
+            overlay.classList.add('show');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('show');
+        });
+
+        mainContent.style.display = 'none';
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                mainContent.style.display = 'block';
+                userProfile.classList.remove('hidden');
+                userNameEl.textContent = user.displayName || user.email;
+                userPhotoEl.src = user.photoURL || 'default-avatar.png';
+                logoutBtn.addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        window.location.href = 'log.html';
+                    }).catch((error) => {
+                        console.error("Logout Error:", error);
+                    });
+                });
+            } else {
+                window.location.href = 'log.html';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Pi Nord</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base, Variables & Animated Background --- */
+        :root {
+            --dark-blue: #0a192f;
+            --light-slate: #ccd6f6;
+            --slate: #8892b0;
+            --green: #64ffda;
+            --white: #ffffff;
+            --red: #ff4b4b;
+            --font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--slate);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background: linear-gradient(15deg, black, rgb(55, 6, 103),black,black, rgb(55, 6, 103),black,rgb(55, 6, 103));
+            background-size: 200% 200%;
+            animation: pan-background 25s ease-in-out infinite alternate;
+        }
+
+        /* --- Animation Keyframes --- */
+        @keyframes pan-background { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        @keyframes slideDownFadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUpFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes popIn { 0% { opacity: 0; transform: scale(0.8); } 80% { opacity: 1; transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- Header & Global Styles --- */
+        header { width: 100%; max-width: 1000px; margin-bottom: auto; opacity: 0; animation: slideDownFadeIn 0.6s ease-out 0.2s forwards; }
+        .header-content { display: flex; align-items: center; justify-content: space-between; }
+        main { margin-top: 50px; margin-bottom: 50px; }
+        .back-link, .bac-link { color: var(--green); text-decoration: none; font-weight: 700; font-size: 1.1rem; transition: transform 0.3s ease, color 0.3s ease; }
+        .back-link:hover, .bac-link:hover { color: var(--white); transform: translateX(-5px); }
+        
+        /* --- Profile Page Styles --- */
+        #profile-container { width: 100%; max-width: 700px; text-align: center; background-color: rgba(27, 42, 72, 0.5); border: 1px solid var(--slate); border-radius: 16px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; animation: slideUpFadeIn 0.7s ease-out 0.4s forwards; }
+        #profile-container.hidden { display: none; }
+        .profile-header #user-photo { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--green); margin-bottom: 15px; opacity: 0; animation: popIn 0.6s ease-out 0.7s forwards; }
+        .profile-header #user-name { color: var(--light-slate); font-size: 2.5rem; margin: 0; opacity: 0; animation: slideUpFadeIn 0.6s ease-out 0.9s forwards; }
+        .profile-header #user-email { font-size: 1.1rem; margin-top: 5px; color: var(--green); opacity: 0; animation: slideUpFadeIn 0.6s ease-out 1.0s forwards; }
+        .last-active-date { font-size: 0.9rem; margin-top: 10px; opacity: 0; animation: slideUpFadeIn 0.6s ease-out 1.1s forwards; }
+        #profile-container hr { border: none; height: 1px; background-color: var(--slate); margin: 30px 0; opacity: 0; animation: fadeIn 0.8s ease-out 1.2s forwards; }
+        .profile-section h2 { color: var(--light-slate); font-size: 1.5rem; margin-bottom: 20px; opacity: 0; animation: slideUpFadeIn 0.6s ease-out 1.3s forwards; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .stat-box { background-color: var(--dark-blue); padding: 20px; border-radius: 12px; border: 1px solid var(--slate); transition: transform 0.3s ease, box-shadow 0.3s ease; opacity: 0; animation: popIn 0.6s ease-out forwards; }
+        .stats-grid .stat-box:nth-child(1) { animation-delay: 1.5s; }
+        .stats-grid .stat-box:nth-child(2) { animation-delay: 1.6s; }
+        .stats-grid .stat-box:nth-child(3) { animation-delay: 1.7s; }
+        .stats-grid .stat-box:nth-child(4) { animation-delay: 1.8s; }
+        .stat-box:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+        .stat-number { display: block; font-size: 2.5rem; font-weight: 900; color: var(--green); }
+        .stat-label { margin: 5px 0 0; font-size: 0.9rem; }
+
+        .progress-breakdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .progress-box { background-color: rgba(10, 25, 47, 0.8); padding: 15px; border-radius: 12px; opacity: 0; animation: popIn 0.6s ease-out forwards; }
+        .progress-breakdown-grid .progress-box:nth-child(1) { animation-delay: 1.9s; }
+        .progress-breakdown-grid .progress-box:nth-child(2) { animation-delay: 2.0s; }
+        .progress-breakdown-grid .progress-box:nth-child(3) { animation-delay: 2.1s; }
+        .progress-breakdown-grid .progress-box:nth-child(4) { animation-delay: 2.2s; }
+        .progress-number { display: block; font-size: 2rem; font-weight: 900; color: var(--light-slate); }
+        .progress-label { margin: 0; font-size: 1rem; color: var(--green); }
+
+        .logout-btn-profile { width: 100%; background-color: var(--red); color: var(--white); border: none; border-bottom: 4px solid #b33a3a; padding: 15px; font-size: 1.2rem; font-weight: 700; border-radius: 12px; cursor: pointer; transition: all 0.2s ease; opacity: 0; animation: slideUpFadeIn 0.6s ease-out 2.3s forwards; }
+        .logout-btn-profile:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(255, 75, 75, 0.3); }
+        .logout-btn-profile:active { transform: translateY(1px); box-shadow: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="back-link">&larr; Back to Hub</a>
+            <a href="html.html" class="bac-link">Release Notes &rarr;</a>
+        </div>
+    </header>
+
+    <main>
+        <div id="profile-container" class="hidden">
+            
+            <div class="profile-header">
+                <img id="user-photo" src="default-avatar.png" alt="Profile Picture">
+                <h1 id="user-name">Loading...</h1>
+                <p id="user-email">loading@email.com</p>
+                <p id="last-active" class="last-active-date"></p>
+            </div>
+
+            <hr>
+
+            <div class="profile-section">
+                <h2>Your Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span id="total-xp" class="stat-number">0</span>
+                        <p class="stat-label">Total XP</p>
+                    </div>
+                    <div class="stat-box">
+                        <span id="current-streak" class="stat-number">0</span>
+                        <p class="stat-label">Current Streak 🔥</p>
+                    </div>
+                    <div class="stat-box">
+                        <span id="streak-freezes" class="stat-number">0</span>
+                        <p class="stat-label">Streak Freezes ❄️</p>
+                    </div>
+                    <div class="stat-box">
+                        <span id="lessons-completed" class="stat-number">0</span>
+                        <p class="stat-label">Lessons Completed</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="profile-section">
+                <h2>Subject Progress</h2>
+                <div class="progress-breakdown-grid">
+                    <div class="progress-box">
+                        <span id="html-count" class="progress-number">0</span>
+                        <p class="progress-label">HTML</p>
+                    </div>
+                    <div class="progress-box">
+                        <span id="css-count" class="progress-number">0</span>
+                        <p class="progress-label">CSS</p>
+                    </div>
+                    <div class="progress-box">
+                        <span id="js-count" class="progress-number">0</span>
+                        <p class="progress-label">JavaScript</p>
+                    </div>
+                    <div class="progress-box">
+                        <span id="vue-count" class="progress-number">0</span>
+                        <p class="progress-label">Vue.js</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="profile-section">
+                <h2>Account Actions</h2>
+                <button id="logout-btn" class="logout-btn-profile">Log Out of Account</button>
+            </div>
+
+        </div>
+    </main>
+
+    <script type="module">
+        // Import Firebase services you need from your config file
+        import { auth, db } from './firebase-config.js';
+        import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+        // Get references to all profile elements
+        const profileContainer = document.getElementById('profile-container');
+        const userNameEl = document.getElementById('user-name');
+        const userEmailEl = document.getElementById('user-email');
+        const userPhotoEl = document.getElementById('user-photo');
+        const logoutBtn = document.getElementById('logout-btn');
+        const lastActiveEl = document.getElementById('last-active');
+        const totalXpEl = document.getElementById('total-xp');
+        const currentStreakEl = document.getElementById('current-streak');
+        const streakFreezesEl = document.getElementById('streak-freezes');
+        const lessonsCompletedEl = document.getElementById('lessons-completed');
+        const htmlCountEl = document.getElementById('html-count');
+        const cssCountEl = document.getElementById('css-count');
+        const jsCountEl = document.getElementById('js-count');
+        const vueCountEl = document.getElementById('vue-count');
+
+        // This function runs whenever the user's login state changes
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // --- USER IS SIGNED IN ---
+                
+                // Create a reference to this user's document in the 'users' collection
+                const userDocRef = doc(db, "users", user.uid);
+                
+                try {
+                    // Fetch the document from Firestore
+                    const docSnap = await getDoc(userDocRef);
+
+                    if (docSnap.exists()) {
+                        // The user has a data document, so we can populate the page
+                        const userData = docSnap.data();
+
+                        profileContainer.classList.remove('hidden');
+
+                        // 1. Populate basic user info
+                        userNameEl.textContent = userData.displayName || "Anonymous User";
+                        userEmailEl.textContent = user.email; // Auth email is reliable
+                        userPhotoEl.src = user.photoURL || 'default-avatar.png';
+                        lastActiveEl.textContent = `📅 Last active: ${userData.lastCompletedDate || 'N/A'}`;
+
+                        // 2. Populate main stats, providing a default of 0 if a field doesn't exist
+                        totalXpEl.textContent = userData.score || 0;
+                        currentStreakEl.textContent = userData.streak || 0;
+                        streakFreezesEl.textContent = userData.streakFreezes || 0;
+
+                        // 3. Process the 'completedLessons' map to calculate totals
+                        if (userData.completedLessons) {
+                            const lessonKeys = Object.keys(userData.completedLessons);
+                            lessonsCompletedEl.textContent = lessonKeys.length;
+
+                            let htmlCount = 0, cssCount = 0, jsCount = 0, vueCount = 0;
+                            lessonKeys.forEach(key => {
+                                if (key.startsWith('html')) htmlCount++;
+                                else if (key.startsWith('css')) cssCount++;
+                                else if (key.startsWith('js')) jsCount++;
+                                else if (key.startsWith('vue')) vueCount++;
+                            });
+                            
+                            htmlCountEl.textContent = htmlCount;
+                            cssCountEl.textContent = cssCount;
+                            jsCountEl.textContent = jsCount;
+                            vueCountEl.textContent = vueCount;
+                        }
+
+                    } else {
+                        // This handles the case of a new user who has authenticated but doesn't have a document in Firestore yet.
+                        console.log("No profile data found for this user.");
+                        profileContainer.classList.remove('hidden');
+                        userNameEl.textContent = user.displayName || "Welcome, New User!";
+                        userEmailEl.textContent = user.email;
+                        lastActiveEl.textContent = "Start your first lesson to see your stats!";
+                    }
+
+                } catch (error) {
+                    console.error("Error fetching user data:", error);
+                }
+
+                // 4. Set up the logout button functionality
+                logoutBtn.addEventListener('click', () => {
+                    signOut(auth).then(() => {
+                        window.location.href = 'log.html';
+                    });
+                });
+
+            } else {
+                // --- USER IS SIGNED OUT ---
+                // Redirect to the login page
+                window.location.href = 'log.html';
+            }
+        });
+    </script>
+</body>
+</html>

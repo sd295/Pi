@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweden's Natural Symbols: A Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --dark-blue: #00489c; /* Swedish Blue */
+            --light-yellow: #fecb00; /* Swedish Yellow */
+            --white: #ffffff;
+            --correct-green: #28a745;
+            --incorrect-red: #dc3545;
+            --text-color: #333;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Nunito', sans-serif;
+            background-color: #006aa7; /* Lighter Swedish Blue */
+            overflow: hidden;
+        }
+
+        /* --- Scene Management --- */
+        .scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-color: #f4f6f9;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s;
+        }
+
+        .scene.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* --- General Content Styling --- */
+        h1 {
+            color: var(--dark-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        p.description {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            min-height: 50px; /* Taller to prevent layout shift */
+            max-width: 650px;
+            transition: color 0.3s;
+        }
+
+        .feedback.correct {
+            color: var(--correct-green);
+        }
+
+        .feedback.incorrect {
+            color: var(--incorrect-red);
+        }
+        
+        /* --- Quiz Options Styling --- */
+        .options-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .option-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+            border-radius: 50px;
+            border: 2px solid var(--dark-blue);
+            background-color: var(--white);
+            color: var(--dark-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 72, 156, 0.2);
+        }
+        
+        /* --- Start and Final Scene --- */
+        .start-btn {
+            margin-top: 2rem;
+            padding: 1.2rem 3rem;
+        }
+
+        #scene-aurora {
+            background-color: #000;
+            color: var(--white);
+        }
+
+        .aurora-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .aurora {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 150%;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: aurora-sway 10s ease-in-out infinite alternate;
+        }
+
+        .aurora-1 {
+            background: radial-gradient(circle at 50% 100%, #0f0, transparent 70%);
+            animation-duration: 12s;
+        }
+
+        .aurora-2 {
+            background: radial-gradient(circle at 50% 100%, #0ff, transparent 70%);
+            animation-duration: 15s;
+            transform: scale(0.8) rotate(-10deg);
+        }
+        
+        #scene-aurora h1, #scene-aurora p {
+            text-shadow: 0 2px 10px #000;
+        }
+
+        @keyframes aurora-sway {
+            from { transform: translateX(-10%) scale(1.2) rotate(5deg); }
+            to { transform: translateX(10%) scale(1.5) rotate(-5deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- SCENE 0: Introduction -->
+    <div id="scene-intro" class="scene active">
+        <h1>Welcome to a Lesson on Sweden</h1>
+        <p class="description">
+            From vast forests to beautiful summer meadows, Sweden's nature is iconic. In this lesson, you'll discover the official national animal and the newly chosen national flower that represent the heart of Swedish identity. Let's begin!
+        </p>
+        <button id="start-btn" class="option-btn start-btn">Start Lesson</button>
+    </div>
+
+    <!-- SCENE 1: The National Animal Quiz -->
+    <div id="scene-animal" class="scene">
+        <h1>Question 1: The National Animal</h1>
+        <p class="description">
+            Often called "Skogens konung" (King of the Forest), this majestic creature is a powerful symbol of Sweden's vast wilderness. Though it was never officially designated, it is overwhelmingly considered the national animal by Swedes.
+        </p>
+        <div class="options-container">
+            <button class="option-btn" data-answer="incorrect" data-feedback="A good guess! The powerful Brown Bear roams Swedish forests, but another animal holds the unofficial title of 'King'.">Brown Bear</button>
+            <button class="option-btn" data-answer="incorrect" data-feedback="While the Arctic Fox is a symbol of the Swedish mountains, the national animal is much larger and more widespread throughout the country.">Arctic Fox</button>
+            <button class="option-btn" data-answer="correct" data-feedback="That's correct! The Eurasian Elk (Älg), often called a Moose in North America, is the undisputed symbol of the Swedish wilderness.">Eurasian Elk</button>
+        </div>
+        <p class="feedback"></p>
+    </div>
+
+    <!-- SCENE 2: The National Flower Quiz -->
+    <div id="scene-flower" class="scene">
+        <h1>Question 2: The National Flower</h1>
+        <p class="description">
+            For decades, Sweden had no official national flower. In 2021, a national vote was held to choose one. The winner is a delicate, bell-shaped flower that dots meadows and roadsides, symbolizing the beloved Swedish summer.
+        </p>
+        <div class="options-container">
+            <button class="option-btn" data-answer="correct" data-feedback="Perfect! The Harebell ('Liten blåklocka') won the vote to become Sweden's national flower, celebrated for its cheerful and resilient nature.">Harebell</button>
+            <button class="option-btn" data-answer="incorrect" data-feedback="Not quite. The Twinflower ('Linnea') was a strong contender and the favorite of botanist Carl Linnaeus, but it didn't win the final vote.">Twinflower</button>
+            <button class="option-btn" data-answer="incorrect" data-feedback="The Daisy ('Prästkrage') is a very common sight in Swedish midsummer crowns, but a different blue flower was chosen by the people.">Daisy</button>
+        </div>
+        <p class="feedback"></p>
+    </div>
+
+    <!-- SCENE 3: The Aurora Reward -->
+    <div id="scene-aurora" class="scene">
+        <div class="aurora-container">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+        </div>
+        <h1>Lesson Complete!</h1>
+        <p class="description">Congratulations! You've successfully explored the natural symbols that lie at the heart of Swedish identity. You may return now!</p>
+    </div>
+
+    <script>
+        // --- JAVASCRIPT QUIZ LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const scenes = {
+                intro: document.getElementById('scene-intro'),
+                animal: document.getElementById('scene-animal'),
+                flower: document.getElementById('scene-flower'),
+                aurora: document.getElementById('scene-aurora'),
+            };
+
+            function switchScene(currentScene, nextScene) {
+                currentScene.classList.remove('active');
+                setTimeout(() => nextScene.classList.add('active'), 600); // Wait for transition
+            }
+            
+            // --- SCENE 0: INTRO LOGIC ---
+            document.getElementById('start-btn').addEventListener('click', () => {
+                switchScene(scenes.intro, scenes.animal);
+            });
+
+            // --- Function to set up a quiz scene ---
+            function setupQuizScene(scene, nextScene) {
+                const options = scene.querySelectorAll('.option-btn');
+                const feedbackEl = scene.querySelector('.feedback');
+                let answered = false; // Prevent multiple answers
+
+                options.forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (answered) return;
+                        answered = true;
+
+                        const isCorrect = button.dataset.answer === 'correct';
+                        feedbackEl.textContent = button.dataset.feedback;
+                        feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
+                        
+                        if (isCorrect) {
+                            setTimeout(() => {
+                                switchScene(scene, nextScene);
+                            }, 3000); // Longer delay to read the feedback
+                        } else {
+                            setTimeout(() => {
+                                answered = false; // Allow user to try again
+                            }, 2000);
+                        }
+                    });
+                });
+            }
+
+            // --- Initialize scenes ---
+            setupQuizScene(scenes.animal, scenes.flower);
+            setupQuizScene(scenes.flower, scenes.aurora);
+        });
+    </script>
+
+</body>
+</html>

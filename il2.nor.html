@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norway's Natural Symbols: A Lesson</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --norway-red: #BA0C2F;
+            --norway-blue: #00205B;
+            --white: #ffffff;
+            --correct-green: #28a745;
+            --incorrect-red: #dc3545;
+            --text-color: #333;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--norway-blue);
+            overflow: hidden;
+        }
+
+        /* --- Scene Management --- */
+        .scene {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            background-color: #f4f6f9;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s;
+        }
+
+        .scene.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        /* --- General Content Styling --- */
+        h1 {
+            color: var(--norway-blue);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        p.description {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .feedback {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            min-height: 50px; /* Taller to prevent layout shift */
+            max-width: 650px;
+            transition: color 0.3s;
+        }
+
+        .feedback.correct {
+            color: var(--correct-green);
+        }
+
+        .feedback.incorrect {
+            color: var(--incorrect-red);
+        }
+        
+        /* --- Quiz Options Styling --- */
+        .options-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .option-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+            border-radius: 50px;
+            border: 2px solid var(--norway-red);
+            background-color: var(--white);
+            color: var(--norway-red);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            background-color: var(--norway-red);
+            color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(186, 12, 47, 0.2);
+        }
+        
+        /* --- Start and Final Scene --- */
+        .start-btn {
+            margin-top: 2rem;
+            padding: 1.2rem 3rem;
+        }
+
+        #scene-aurora {
+            background-color: #000;
+            color: var(--white);
+        }
+
+        .aurora-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .aurora {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 150%;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: aurora-sway 10s ease-in-out infinite alternate;
+        }
+
+        .aurora-1 {
+            background: radial-gradient(circle at 50% 100%, #0f0, transparent 70%);
+            animation-duration: 12s;
+        }
+
+        .aurora-2 {
+            background: radial-gradient(circle at 50% 100%, #0ff, transparent 70%);
+            animation-duration: 15s;
+            transform: scale(0.8) rotate(-10deg);
+        }
+        
+        #scene-aurora h1, #scene-aurora p {
+            text-shadow: 0 2px 10px #000;
+        }
+
+        @keyframes aurora-sway {
+            from { transform: translateX(-10%) scale(1.2) rotate(5deg); }
+            to { transform: translateX(10%) scale(1.5) rotate(-5deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- SCENE 0: Introduction -->
+    <div id="scene-intro" class="scene active">
+        <h1>Welcome to a Lesson on Norway</h1>
+        <p class="description">
+            Norway's dramatic landscape of fjords, mountains, and waterfalls is world-famous. In this lesson, we will explore the official national bird and flower that thrive in this stunning environment. Let's begin our journey!
+        </p>
+        <button id="start-btn" class="option-btn start-btn">Start Lesson</button>
+    </div>
+
+    <!-- SCENE 1: The National Bird Quiz -->
+    <div id="scene-animal" class="scene">
+        <h1>Question 1: The National Bird</h1>
+        <p class="description">
+            This small but incredibly resilient bird is a true Norwegian survivor. It lives by fast-flowing rivers and is unique for its ability to dive and walk on the riverbed to hunt for insects, even during the coldest winters. It was chosen as the national bird in 1963.
+        </p>
+        <div class="options-container">
+            <button class="option-btn" data-answer="correct" data-feedback="That's correct! The White-throated Dipper, or 'Fossekall' (waterfall-caller) in Norwegian, perfectly represents the country's connection to its wild rivers and waterfalls.">White-throated Dipper</button>
+            <button class="option-btn" data-answer="incorrect" data-feedback="A great choice, but incorrect. While the Atlantic Puffin is an iconic bird of the Norwegian coast, another bird was chosen to represent the entire nation.">Atlantic Puffin</button>
+            <button class="option-btn" data-answer="incorrect" data-feedback="Close! The magnificent White-tailed Eagle rules the skies along Norway's coast, but the national bird is a much smaller, river-dwelling creature.">White-tailed Eagle</button>
+        </div>
+        <p class="feedback"></p>
+    </div>
+
+    <!-- SCENE 2: The National Flower Quiz -->
+    <div id="scene-flower" class="scene">
+        <h1>Question 2: The National Flower</h1>
+        <p class="description">
+            Norway has two national flowers. This one, chosen by a popular radio poll in 1976, is a hardy plant that covers the coastal heaths and mountainsides in a stunning blanket of purple blooms in late summer. It's a vital source of nectar for bees.
+        </p>
+        <div class="options-container">
+            <button class="option-btn" data-answer="incorrect" data-feedback="Not this one. While Mountain Avens is a beautiful and tough alpine flower, the national flower is known for its vibrant purple color.">Mountain Avens</button>
+            <button class="option-btn" data-answer="correct" data-feedback="Perfect! Purple Heather ('Røsslyng' in Norwegian) was chosen for its rugged beauty and widespread presence across the Norwegian landscape.">Purple Heather</button>
+            <button class="option-btn" data-answer="incorrect" data-feedback="A good guess, as Foxglove is common in Norway. However, the national flower is a low-growing shrub that forms vast carpets of color.">Foxglove</button>
+        </div>
+        <p class="feedback"></p>
+    </div>
+
+    <!-- SCENE 3: The Aurora Reward -->
+    <div id="scene-aurora" class="scene">
+        <div class="aurora-container">
+            <div class="aurora aurora-1"></div>
+            <div class="aurora aurora-2"></div>
+        </div>
+        <h1>Lesson Complete!</h1>
+        <p class="description">Congratulations! You have successfully learned about the natural symbols that represent the wild and beautiful spirit of Norway. You may leave this page now.</p>
+    </div>
+
+    <script>
+        // --- JAVASCRIPT QUIZ LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const scenes = {
+                intro: document.getElementById('scene-intro'),
+                animal: document.getElementById('scene-animal'),
+                flower: document.getElementById('scene-flower'),
+                aurora: document.getElementById('scene-aurora'),
+            };
+
+            function switchScene(currentScene, nextScene) {
+                currentScene.classList.remove('active');
+                setTimeout(() => nextScene.classList.add('active'), 600); // Wait for transition
+            }
+            
+            // --- SCENE 0: INTRO LOGIC ---
+            document.getElementById('start-btn').addEventListener('click', () => {
+                switchScene(scenes.intro, scenes.animal);
+            });
+
+            // --- Function to set up a quiz scene ---
+            function setupQuizScene(scene, nextScene) {
+                const options = scene.querySelectorAll('.option-btn');
+                const feedbackEl = scene.querySelector('.feedback');
+                let answered = false; // Prevent multiple answers
+
+                options.forEach(button => {
+                    button.addEventListener('click', () => {
+                        if (answered) return;
+                        answered = true;
+
+                        const isCorrect = button.dataset.answer === 'correct';
+                        feedbackEl.textContent = button.dataset.feedback;
+                        feedbackEl.className = isCorrect ? 'feedback correct' : 'feedback incorrect';
+                        
+                        if (isCorrect) {
+                            setTimeout(() => {
+                                switchScene(scene, nextScene);
+                            }, 3000); // Longer delay to read the feedback
+                        } else {
+                            setTimeout(() => {
+                                answered = false; // Allow user to try again
+                            }, 2000);
+                        }
+                    });
+                });
+            }
+
+            // --- Initialize scenes ---
+            setupQuizScene(scenes.animal, scenes.flower);
+            setupQuizScene(scenes.flower, scenes.aurora);
+        });
+    </script>
+
+</body>
+</html>

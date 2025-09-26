@@ -1,37 +1,14 @@
-
-.model-switcher {
-    margin-bottom: 10px;
-}
-
-.model-switcher button {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    margin: 0 5px;
-    transition: background-color 0.3s;
-}
-
-.model-switcher button:hover {
-    background-color: #ddd;
-}
-
-.model-switcher button.active {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-}/* chat.css - Styles for the new chat interface */
+/* chat.css - Styles for the new chat interface */
 
 .chat-container {
-    max-width: 600px;
-    margin: 40px auto; /* Centers the chat box */
+    
+    
     background: rgba(46, 52, 64, 0.85); /* Semi-transparent dark background */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    height: 70vh; /* 70% of the viewport height */
+    height: 100vh; /* 70% of the viewport height */
     overflow: hidden;
     backdrop-filter: blur(10px); /* Frosted glass effect */
     border: 1px solid rgba(255, 255, 255, 0.1);

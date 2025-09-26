@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Nord</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <main class="minigame-container-simple">
+        <!-- Left Panel: Instructions -->
+        <div class="instructions-panel">
+            <h2 id="game-title">Loading Challenge...</h2>
+            <p id="game-prompt"></p>
+            <div class="prompt-code-container">
+                <h3>Goal Code:</h3>
+                <pre><code id="prompt-code"></code></pre>
+            </div>
+            <a id="hub-link" href="index.html" class="back-link hub-link">Back to Subject Hub</a>
+        </div>
+        
+        <!-- Right Panel: The Code Typer -->
+        <div class="challenge-area code-typer-container">
+            <h3>Your Code:</h3>
+            <!-- This is the pretty display that shows the user's progress -->
+            <div id="user-code-display" class="code-display"></div>
+            
+            <!-- This is the hidden, functional textarea where the user actually types -->
+            <textarea id="code-input" spellcheck="false" autofocus></textarea>
+        </div>
+    </main>
+
+    
+    <!-- Feedback Overlay -->
+    <div id="feedback-overlay" class="hidden">
+        <div id="feedback-box">
+            <h1 id="feedback-title"></h1>
+            <p id="feedback-text"></p>
+            <button id="next-step-btn"></button>
+        </div>
+    </div>
+    
+    <footer>
+        
+        <button id="open-iframe-btn" class="ai">PLI6</button>
+    </footer>
+
+    <!-- This is the single, correct iframe overlay -->
+    <div id="iframe-overlay" class="iframe-overlay">
+        <div class="iframe-container">
+            <button id="close-iframe-btn" class="close-btn">&times;</button>
+            <iframe 
+                title="Chat Interface"
+                src="pli.html"
+                width="100%"
+                height="600"
+                style="border:none;">
+            </iframe>
+        </div>
+    </div>
+    
+    <!-- Your scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="l.js"></script>
+    <script type="module" src="minigame.js"></script>
+
+    <!-- Add this script for the iframe overlay controls -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openBtn = document.getElementById('open-iframe-btn');
+            const closeBtn = document.getElementById('close-iframe-btn');
+            const overlay = document.getElementById('iframe-overlay');
+
+            if(openBtn && closeBtn && overlay) {
+                // Event listener to show the overlay and disable scrolling
+                openBtn.addEventListener('click', () => {
+                    overlay.classList.add('show');
+                    document.body.classList.add('no-scroll');
+                });
+
+                // Event listener to hide the overlay and enable scrolling
+                closeBtn.addEventListener('click', () => {
+                    overlay.classList.remove('show');
+                    document.body.classList.remove('no-scroll');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
