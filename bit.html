@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLI 7 Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Black to Dark Violet Gradient */
+            --bg-gradient: linear-gradient(135deg, #000000 0%, #1a0b2e 50%, #2d1b4e 100%);
+            --card-bg: rgba(20, 20, 23, 0.95);
+            --text-main: #ffffff;
+            --text-secondary: #a39eb5;
+            /* Neon Violet Accent */
+            --accent-color: #8a2be2; 
+            --accent-glow: 0 0 20px rgba(138, 43, 226, 0.4);
+            --gradient-text: linear-gradient(to right, #c471ed, #8a2be2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+        /* Subtle background animation effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138,43,226,0.1) 0%, transparent 60%);
+            animation: pulse 10s infinite alternate;
+            z-index: -1;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            padding: 3.5rem;
+            border-radius: 24px;
+            /* Violet Glow Border */
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), var(--accent-glow);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .count-display {
+            font-size: 5rem;
+            font-weight: 800;
+            margin: 1.5rem 0;
+            /* Gradient Text */
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+            line-height: 1;
+        }
+
+        .status {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            min-height: 20px;
+        }
+
+        .refresh-btn {
+            margin-top: 2.5rem;
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: #dcd6f7;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+        }
+
+        .refresh-btn:hover {
+            background: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top: 4px solid var(--accent-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 30px auto;
+            display: none;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes pulse { 0% { opacity: 0.5; transform: scale(1); } 100% { opacity: 1; transform: scale(1.1); } }
+
+        .error { color: #ff5555; font-size: 0.85rem; padding: 10px; background: rgba(255, 0, 0, 0.1); border-radius: 8px; margin-top: 15px; border: 1px solid #ff5555;}
+    </style>
+</head>
+<body>
+
+<div class="dashboard-card">
+    <h1>PLI 7 Accounts</h1>
+    
+    <div id="spinner" class="spinner"></div>
+    <div id="countValue" class="count-display">0</div>
+    
+    <div id="statusText" class="status">Connecting...</div>
+
+    <button class="refresh-btn" onclick="fetchUserCount()">Reload</button>
+</div>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, getCountFromServer } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // Your Configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCLBBVNrXX9y1C2P1v4AxafjupWEecEkOE",
+        authDomain: "pli-6-lte.firebaseapp.com",
+        projectId: "pli-6-lte",
+        storageBucket: "pli-6-lte.firebasestorage.app",
+        messagingSenderId: "1077997249751",
+        appId: "1:1077997249751:web:95fe2e7b1c92ffc04cfc92"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const countDisplay = document.getElementById('countValue');
+    const statusText = document.getElementById('statusText');
+    const spinner = document.getElementById('spinner');
+
+    window.fetchUserCount = async function() {
+        countDisplay.style.display = 'none';
+        spinner.style.display = 'block';
+        statusText.innerText = "Syncing with Database...";
+        
+        try {
+            // Target 'users' collection
+            const coll = collection(db, "users");
+            
+            // The Cheap Read
+            const snapshot = await getCountFromServer(coll);
+            
+            spinner.style.display = 'none';
+            countDisplay.style.display = 'block';
+            
+            // Animate number
+            animateValue(countDisplay, 0, snapshot.data().count, 1200);
+            
+            statusText.innerText = "Active Accounts";
+            
+        } catch (error) {
+            spinner.style.display = 'none';
+            statusText.innerHTML = `<div class="error">Access Denied<br><span style="font-size:0.7em">Check Security Rules</span></div>`;
+            console.error(error);
+        }
+    };
+
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Auto-start
+    document.addEventListener('DOMContentLoaded', fetchUserCount);
+</script>
+
+</body>
+</html>
