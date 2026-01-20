@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TSLR File Creator</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #111; color: #fff; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; background: #222; border: 1px solid #444; color: #fff; border-radius: 8px; }
+        button { padding: 15px 30px; background: #8b5cf6; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #7c3aed; }
+    </style>
+</head>
+<body>
+    <h1>Create Index File (.tslr)</h1>
+    <p>Fill this out to ensure perfect indexing in PLI 7.</p>
+    
+    <label>Site Name / Title</label>
+    <input type="text" id="title" placeholder="e.g. My Portfolio">
+    
+    <label>Link (URL)</label>
+    <input type="text" id="link" placeholder="https://...">
+    
+    <label>Region / Country</label>
+    <input type="text" id="region" placeholder="e.g. Romania">
+    
+    <label>Description (Be detailed!)</label>
+    <textarea id="desc" rows="5" placeholder="Describe what the site is about..."></textarea>
+    
+    <button onclick="downloadFile()">Download .tslr File</button>
+
+    <script>
+        function downloadFile() {
+            const data = {
+                title: document.getElementById('title').value,
+                link: document.getElementById('link').value,
+                region: document.getElementById('region').value,
+                description: document.getElementById('desc').value
+            };
+            
+            if(!data.title || !data.link) return alert("Title and Link are required");
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = data.title.replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.tslr';
+            a.click();
+        }
+    </script>
+</body>
+</html>
